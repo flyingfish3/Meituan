@@ -1,0 +1,531 @@
+@import url('share.css');
+ body{
+ 	width:980px;
+ }
+.header_container{
+	width:100%;
+	position: relative;
+}
+	.master{
+		width:100%;
+		height:30px;
+		line-height:30px;
+		border:1px solid #DDDDDD;
+		background-color:#F9F9F9;
+	}
+		.master_left{position:absolute;left:0;}
+			.master li a{
+				display:block;
+				padding-left:10px;
+				padding-right:10px;
+			}
+			.master_left .savemei{
+				position: relative;
+				top:1px;
+				left:3px;
+			}
+			.master_left .vip{
+				position:relative;
+				top:3px;
+			}
+			.master_left .app{
+				width:85px;
+			}
+			.master_left .app .phone{
+				position: relative;
+				top:3px;
+			}
+			.master_left .app_menu{
+				display:none; 
+				width:175px;
+				height:315px;
+				background:#FFFFFF;
+				border:1px solid #DDDDDD;
+				border-top:0;
+				position: absolute;
+				z-index:10;
+			}
+				.QR_f{
+					color:black;
+				}
+				.QR_p{
+					margin-left:20px;
+				}
+				.QR_a{
+					margin-left: 10px;
+					position:relative;
+					top:-35px;
+				}
+		/* master右侧部分 */
+		.master_right{position:absolute;right:0;}
+			.dnMe a img{vertical-align:middle;}
+			.dnMe ul{
+				display:none;
+				/* width:80px; */
+				font-size:16px;
+				background:#FFFFFF;
+				border:1px solid #DDDDDD;
+				border-top:0;
+				/* padding-top:10px; */
+				position:relative;
+				z-index:1; 
+				float:right; 
+			}
+			.dnMe ul li{
+				display:block;
+				width:100%;
+				/* margin-left:2px; */
+				/* margin-right:0px; */
+				text-align:center;
+				overflow:hidden;
+			}
+			.dnMe ul li a{
+				float:left;
+			}
+			/* 最近浏览和购物车的宽度 */
+			.dnMe .rec_menu,.dnMe .shopping_car_menu{
+				width:220px;
+			}
+			/* 我的美团项的宽度 */
+			.dnMe .my_meituan_menu{
+				width:83px;	
+			}
+				/* 最近浏览的下拉菜单中的样式 */
+				.rec_menu li{
+					padding-top:10px;
+					padding-bottom:10px;
+					overflow:hidden;
+				}
+				.rec_menu img{
+					margin-top:3px;
+					float:left;
+				}
+				.rec_menu .rec{
+					display:block;
+					float:left;
+					width:100px;
+					position:relative;
+					font-size:10px;
+					margin-left:8px;
+					line-height:18px;
+					text-align:left;	
+				}
+				.rec_menu .new_price{
+					color:#c20;
+					line-height:22px;
+				}
+				.rec_menu .old_price{
+					text-decoration:line-through;
+				}
+			/* 联系客服项样式 */
+			.dnMe .contact_menu{
+				width:90px;
+			}
+			/* 我是商家项样式 */
+			.dnMe .merchant_menu{
+				width:100px;
+			}
+
+	/*导航栏部分的样式 */
+	.server{
+		margin-top:20px;
+		width:100%;
+		height:70px;
+	}
+		.server .log,.server .menubar,.server .ensure{
+			float:left;
+			height:100%;
+		}
+			.server .log img{
+				position: relative;
+				top:5px;
+			}
+		.server .menubar{
+			width:550px;
+			margin-left:20px;/* 
+			border:1px solid red; */
+		}
+			.server .menubar ol{
+				width:100%;
+				padding-top:35px;
+				padding-bottom:5px;
+			    overflow:hidden;
+			}
+			.server .menubar ol li{
+				float:left;
+				width:33.33%;
+				position: relative;
+				left:50px;
+				color:#999999;
+			}
+			.server .menubar ol .press_current{
+				color:black;
+			}
+		.server .press{
+			width:100%;
+			height:3px;
+			border-radius:4px;
+			border:1px solid #DEDEDE;
+			background-color:#EEEEEE;
+		}
+		.server .press .pressbar{
+			width:33.3%;
+			height:100%;
+			background-color:#2BB8AA;
+			float:left;
+		}
+		.server .ensure{ 
+			width:320px;
+			text-align:right;
+		}
+		.server .ensure img{
+			position: relative;
+			top:20px;
+		}
+	/* 我的购物车 */
+	.shopcar{
+		margin-top:40px;
+		width:100%;
+		/* height:900px; */
+		border-top:1px solid #DDDDDD;
+	}
+		/* 标题 */
+		.shopcar .shopcar_title{
+			height:60px;
+		}
+		.shopcar .shopcar_title .title{
+			font-size:24px;
+			line-height:60px;
+		}
+		.shopcar .shopcar_title .number{
+			font-size:14px;
+			font-weight:bold;
+			color:gray;
+		}
+		.shopcar .shopcar_title .number i{
+			font-size:14px;
+			font-style:normal;
+			color:red;
+			font-weight:bold;
+		}
+		/* 购物车清单 */
+		.shopcar .shopcar_ctx{
+			border:1px solid #DDDDDD;
+			font-size:14px;
+		}
+		.shopcar .shopcar_ctx table{
+			width:978px;
+		}
+		.shopcar .shopcar_ctx table i{
+			font-style:normal;
+			font-size:14px;
+			color:#f76120;
+			font-family: arial;
+		}
+		/* th样式 */
+		.shopcar_ctx table .for_th{
+			width:100%;
+			background-color:#F7F7F7;
+			height:34px;
+		}
+			.shopcar_ctx table .for_th th{
+				font-size:14px;
+				text-align:center;
+				/* border-top:1px solid #DDDDDD; */
+				border-bottom:1px solid #DDDDDD;
+			}
+			.shopcar_ctx table .for_th th span{
+				font-size:14px;
+			}
+			.shopcar_ctx table .for_th .choose{
+				width:80px;
+			}
+			.shopcar_ctx table .for_th .list{
+				width:460px;
+			}
+			.shopcar_ctx table .for_th .price{
+				width:80px;
+			}
+			.shopcar_ctx table .for_th .count{
+				width:100px;
+			}
+			.shopcar_ctx table .for_th .number{
+				width:100px;
+			}
+			.shopcar_ctx table .for_th .del{
+				width:90px;
+			}
+			.shopcar .shopcar_ctx table tr label{
+				width:18px;
+				height:18px;
+				border:1px solid grey;
+				border-radius:2px;
+			}
+			.shopcar .shopcar_ctx table .selectSingle,.selectAll{
+				color:white;
+				font-weight:bold;
+			}
+			.shopcar .shopcar_ctx table .method a{
+				color:#2BB8AA;
+			}
+			/* td样式 */
+			.shopcar_ctx table tr td{
+				height:60px;
+				text-align:center;
+				border-bottom:1px dotted #DDDDDD;
+			}
+			.shopcar_ctx table tr td a:hover{
+				text-decoration:underline;
+				color:black;
+			}
+			.shopcar_ctx table .imga{
+				width:460px;
+			}
+			.shopcar_ctx table .imga a{
+				position: relative;
+				top:5px;
+			}
+			.imga img{
+				float:left;
+			}
+			.shopcar_ctx table tr .RMB{
+				font-size: 14px;
+			    color: #f76120;
+			    font-family: arial;
+			}
+			.shopcar_ctx table tr .amount{
+				width:80px;
+				border:1px solid #DDDDDD;
+				overflow:hidden;
+			}
+			.amount .minus,.amount .add{
+				width:20px;
+				height:35px;
+				line-height:35px;
+				font-size:14px;
+				font-weight:bold;
+				float:left;
+				background-color:#EEEEEE;
+			}
+			.shopcar_ctx table tr .amount input{
+				width:40px;
+				height:35px;
+				border:none;
+				text-align:center;
+				font-size:14px;
+				font-weight:bold;
+				float:left;
+			}
+		/* 抵用券样式 */
+		.shopcar_ctx .vouchers{
+			overflow:hidden;
+			padding:0 10px;
+		}
+			.shopcar_ctx .voucher{
+				text-align:right;
+				height:40px;
+				line-height:40px;
+			}
+			.voucher span{
+				font-family: arial,sans-serif;
+				padding:0 10px;
+				font-size:14px;
+			}
+			.shopcar_ctx  .vouchersmark{
+				background-color:#F9F9F9;
+				padding:10px 20px;
+				border-top:1px solid #DDDDDD;
+				border-bottom:1px solid #DDDDDD;
+				float:right;
+				display:none;
+			}
+			.vmt{
+				border-bottom:1px dotted #DDDDDD;
+			}
+			.vmctx{
+				border-top:1px dotted #DDDDDD;
+				padding:10px 0;
+				padding-bottom:0;
+				text-align:center;
+			}
+			.vmctx input{
+				width:210px;
+				height:22px;
+			}
+			.vmctx button{
+				width:70px;
+				background-color:#2EC1B2;
+				color:white;
+				border:none;
+				padding:6px;
+			}
+			.shopcar_ctx div .discount{
+				width:18px;
+				height:18px;
+				border:1px solid grey;
+				border-radius:2px;
+				color:white;
+			}
+		/* 积分券样式 */
+		.shopcar_ctx .IEMGs{
+			padding:0 10px;
+			text-align:right;
+			border-bottom:1px dotted #DDDDDD;
+		}
+			.shopcar_ctx .IEMG{
+				height:40px;
+				line-height:40px;
+			}
+			.IEMG span{
+				font-family: arial,sans-serif;
+				padding:0 10px;
+				font-size:14px;
+			}
+		/* 总计的样式 */
+		.shopcar_ctx .countAll{
+			height:55px;
+			line-height:55px;
+			text-align:right;
+			padding:0 15px;
+		}
+			.shopcar_ctx .countAll .count_number{
+				display:inline-block;
+			}
+				.shopcar_ctx .countAll .count_number span{
+					color:#F76120;
+					font-size:16px;
+					font-weight:bold;
+					font-family: arial,sans-serif;
+				}
+			.shopcar_ctx .countAll .count_money{
+				display:inline-block;
+				font-weight:bold;
+			}
+				.shopcar_ctx .countAll .count_money span{
+					font-weight:bold;
+					font-size:20px;
+					color:#F76120;
+					font-family: arial,sans-serif;
+				}
+	/* 收货地址的样式 */
+	.addressManage{
+		border:1px solid #DDDDDD;
+		margin-top:10px;
+	}
+		/* 标题 */
+		.addressManage .addr_title{
+			/* width:100%; */
+			background-color:#F7F7F7;
+			height:34px;
+			line-height:34px;
+			border-bottom:1px solid #DDDDDD;
+			padding:0 15px;
+		}
+			.addressManage .addr_title .title{
+				font-size:14px;
+				font-weight:bold;
+			}
+			.addressManage .addr_title a{
+				color: #2BB8AA;
+			}
+			.addressManage .addr_title a:hover{
+				text-decoration:underline;
+			}
+		/* 收回地址具体内容 */
+		.addressManage .addr_field{
+			border-bottom:1px dotted #DDDDDD;
+			padding:10px 0;
+		}
+			.addr_field .form_field{
+				padding:10px 40px;
+			}
+			.addr_field .form_field label{
+				display:inline-block;
+				width:100px;
+				text-align:right;
+			}
+			.addr_field .form_field label em{
+				color:#f76120;
+				font-style:normal;
+				padding:0 10px 0 0;
+				font-weight:550;
+			}
+			.addr_field .form_field select{
+				height:30px;
+				width:140px;
+			}
+			.addr_field .form_field input{
+				height:30px;
+				width:130px;
+			}
+			.addr_field .form_field .add_spec{
+				width:480px;
+			}
+		/* 送货时间 */
+		.addressManage .addr_time{
+			border-bottom:1px dotted #DDDDDD;
+		}
+			.addr_time h4{
+				font-weight:normal;
+				line-height:40px;
+				font-size:14px;
+				text-indent:1em;
+				color:black;
+			}
+			.addr_time ul{
+				padding:0 0 10px 0;
+			}
+			.addr_time ul li{
+				float:none;
+				line-height:30px;
+				padding:0 20px;
+			}
+		/* 配送说明 */
+		.addressManage .add_say{
+			/* border-bottom:1px solid #DDDDDD; */
+		}
+			.add_say .say_title h4{
+				font-weight:normal;
+				line-height:40px;
+				font-size:14px;
+				text-indent:1em;
+				display:inline-block;
+				color:black;
+			}
+			.addressManage .add_say textarea{
+				margin:0 0 15px 20px;
+			}
+		/* 提交部分 */
+		/* form .addOthers{
+		} */
+			.addOthers .add_tel{
+				text-align:left;
+				height:80px;
+				line-height:80px;
+			}	
+				.addOthers .add_tel a{
+					color:#2DBBAD;
+				}
+				.addOthers .add_tel a:hover{
+					text-decoration:underline;
+				}
+			.addOthers .add_submit{
+				text-align:right;
+			}
+				.addOthers .add_submit button{
+					width:130px;
+					height:40px;
+					background-color:#2DBBAD;
+					color:white;
+					border:0;
+					font-size:20px;
+					border-bottom: 1px solid #18655e;
+				}
+/* css3实现鼠标浮动到上面箭头旋转 */
+.menuArrow{
+	/* display:inline-block; */
+	transition:all 0;
+}
+.rotate{
+	transform:rotate(180deg);
+}

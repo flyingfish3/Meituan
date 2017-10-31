@@ -1,0 +1,52 @@
+/* 包含左侧导航栏和右侧主体内容的样式 */
+.home{
+	width:980px;
+	overflow:hidden;
+	margin-top:15px;
+}
+/* 左侧导航栏整体样式 */
+.left_menu{
+	width:159px;
+	border:1px solid #DDDDDD;
+	border-right:0;
+	background-color:#F9F9F9;
+	float:left;
+}
+/* 标题样式 */
+.left_menu .title{
+	padding:20px 30px;
+	border-bottom:1px solid #DDDDDD;
+}
+.left_menu .title a{
+	font-size:14px;
+	font-weight:bold;
+}
+.left_menu dt{
+	font-size:14px;
+	font-weight:bold;
+	padding:10px 30px;
+}
+/* dd内容整体样式 */
+.left_menu dd{
+	font-size:12px;
+	padding:0px 30px 10px 45px;
+	border-bottom:1px solid #eee;
+}
+.left_menu .lastdd{
+	border:0;
+}
+/* 左侧导航栏部分所有的li清除浮动 */
+.left_menu ul li{
+	float:none;
+	list-style-type:disc;
+	color: #dedede;
+	line-height:25px;
+	height:25px;
+}
+
+/* iframe中内容的样式 */
+.home_ctx{
+	width:820px;
+	/* border:1px solid #DDDDDD; */
+	float:left;
+}

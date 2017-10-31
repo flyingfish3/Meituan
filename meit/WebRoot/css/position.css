@@ -1,0 +1,150 @@
+.ctx{
+	margin-top:10px;
+	border:1px solid #ddd;
+}
+ .ctx .top{
+	width:100%;
+	height:60px;
+	background-color:#F6F6F6;
+ }
+ 	.top .top_ctx{
+ 		padding:23px 15px;
+ 	}
+ 		/* 实现在一行 */
+ 	  .top_ctx:after,.top_ctx .mychoose:after{
+		content:"";
+		display:block;
+		clear:both;
+ 	  }
+ 	  .top_ctx h4,.top_ctx .mychoose{
+ 	  	float:left;
+ 	  }
+	  .top_ctx .mychoose select,.top_ctx .mychoose input,.top_ctx .mychoose h4,.top_ctx .mychoose button{
+		float:left;
+	  }
+		/* 内容样式 */
+	  .top_ctx h4{
+		font-size:14px;
+	  }
+	  .top_ctx select{
+	  	width:70px;
+	  	margin-left:5px;
+	  	height:23px;
+	  	margin-top:-4px;
+	  }
+	  .top_ctx button{
+	  	margin:0 30px 0 5px;
+	  	width:43px;
+	  	height:22px;
+	  	margin-top:-4px;
+	  	background-color:#2EBDAF;
+	  	color:white;
+	  	border:none;
+	  }
+	  .top_ctx input{
+	  	margin-left:5px;
+	  	width:195px;
+	  	height:22px;
+	  	margin-top:-4px;
+	  }
+	  /* 常用城市和最近访问城市的样式 */
+	  .often,.recvisit{
+	  	border-bottom:1px solid #ddd;
+	  	padding:23px 15px;
+	  }
+	  .often:after,.often ul:after,.recvisit:after,.recvisit ul:after{
+	  	content:"";
+		display:block;
+		clear:both;
+	  }
+	  .often ul li,.recvisit ul li{
+	    width:80px;
+	    text-align:left;    
+	  }
+	  .often ul li a,.recvisit ul li a{
+	  	color:#2BB8BC;
+	    font-size:14px;
+	    font-weight:bold;
+	  }
+	  .often h4,.recvisit h4{
+	  	font-size:14px;
+	  	float:left;
+	  	width:10%;
+	  }
+	  .often ul,.recvisit ul{
+	  	float:left;
+	  	width:90%;
+	  }
+	  .often a:hover,.recvisit a:hover{
+	  	text-decoration:underline;
+	  }
+	/* 字母排序样式 */
+	  .letterOrder .title{
+	  	padding:20px 20px 10px 20px;
+	  }
+      .letterOrder .title h4{
+      	font-size:14px;
+      	width:160px;
+      	height:30px;
+      	line-height:30px;
+      	text-align:center;
+      	position: relative;
+      	left:-390px;
+      	background-color:#2BB8BC;
+      	color:white;
+      }
+      .title h4 p{
+      	color:#2BB8BC;
+      	position: relative;
+      	top:-10px;
+      	left:-60px;
+      }
+	  .letterOrder .letterlist:after,.letterlist ul:after{
+	  	content:"";
+		display:block;
+		clear:both;
+	  }
+	  .letterlist{
+	  	padding:10px;
+	  }
+	  .letterlist h4 span{
+	  	display:block;
+	  	width:30px;
+	  	height:30px;
+	  	line-height:30px;
+	  	background-color:#EEEEEE;
+	  	border:1px solid #ddd;
+	  	font-size:20px;
+	  	text-align:center;
+	  }
+	  .letterlist ul li{
+	  	margin-right:20px;
+	  	padding:5px 0;
+	    text-align:left; 
+	  }
+	  .letterlist ul li a:hover{
+	  	background-color:#2BB8AA;
+	  	color:white;
+	  }
+	  .letterlist ul li a{
+	  	color:#2BB8BC;
+	    font-size:14px;
+	    font-weight:bold;
+	    padding:5px;
+	  }
+	  .letterlist h4{
+	  	float:left;
+	  	width:6%;
+	  	margin-right:5px;
+	  }
+	  .letterlist ul{
+	  	float:left;
+	  	width:92%;
+	  }
+select.prov{
+	text-indent:5px;
+}
+select.citys{
+	width:90px;
+	text-indent:5px;
+}

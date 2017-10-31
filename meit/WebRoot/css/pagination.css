@@ -1,0 +1,33 @@
+.pagination .active{
+	color:white;
+	background-color:#2BB8AA;
+}
+.pagination{
+	margin-top:30px;
+}
+.pagination ul{
+    width:400px;
+}
+.pagination ul:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.pagination ul li{
+	float:left;
+	list-style:none;
+	margin-right:10px;
+}
+.pagination li a{
+	border:1px solid #2BB8AA;
+	padding:6px 10px;
+	text-decoration:none;
+	color:#2BB8AA;
+	font-weight:700;
+	font-size:14px;
+	display:inline-block;
+}
+.pagination li a:hover{
+	color:white;
+	background-color:#2BB8AA;
+}

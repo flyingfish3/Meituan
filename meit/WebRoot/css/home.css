@@ -1,0 +1,333 @@
+*{
+	margin:0;
+	padding:0;
+	margin-left:auto;
+	margin-right:auto;
+}
+a{
+	text-decoration:none;
+}
+.homecontainer{
+	width:818px;;
+	/* height:100%; */
+	border:1px solid #ddd;
+	/* border:1px solid red; */
+}
+	.homecontainer .top{
+		width:818px;
+		height:120px;
+		background:url(../images/homepage/bg.png) 0 0 no-repeat;
+		overflow:hidden;
+	}
+		/* 头像圆框 */
+		.top .photo{
+			width:75px;
+			height:75px;
+			border-radius:50%;
+			border:2px solid white;
+			float:left;
+			background:url(../images/homepage/photo.jpg) 0 0 no-repeat;
+			margin:20px;
+		}
+		.top .introduction{
+			float:left;
+			margin:40px 5px;
+		}
+			.top .introduction .greeting{
+				line-height:25px;
+			}
+			.top .introduction .greeting span{
+				font-weight:bold;
+			}
+			.introduction .safetyLevel{
+				font-size:12px;
+				color:#999;
+			}
+			.introduction .safetyLevel:before{
+				content:"|";
+				color:#999;
+			}
+			.safetyLevel i{
+				font-style:normal;
+				color:red;
+			}
+		.top .account{
+			float:right;
+			margin:40px 20px;
+		}
+			.top .account ul{
+				overflow:hidden;
+			}
+			.top .account ul li{
+				font-size:14px;
+				color:#999;
+				line-height:25px;
+				width:90px;
+				float:left;
+				list-style:none;
+				text-align:center;
+				border-right:1px solid #DDDDDD;
+			}
+			.top .account ul .lastli{
+				border:0;
+			}
+			.top .account ul li a{
+				font-size:18px;
+				display:block;
+				color:#F97920;
+				font-weight:bold;
+			}
+			.top .account ul li a:hover{
+				text-decoration:underline;
+			}
+	/* 我的成长值样式 */
+	.homecontainer .growth{
+		padding:30px 20px;
+	}	
+		/* 成长值标题的样式 */
+		.growth .growth_title{
+			overflow:hidden;
+		}
+		.growth_title .growth_count{
+			float:left;
+			font-size:12px;
+			color:#666666;
+		}
+		.growth_title .growth_count span{
+			color:#F76120;
+			font-size:18px;
+			font-weight:bold;
+		}
+		.growth_title .growth_help{
+			float:right;
+		}
+		.growth_title .growth_help a{
+			font-size:12px;
+			color:#2BB8AA;
+		}
+		.growth_title .growth_help a:hover{
+			text-decoration:underline;
+		}
+		/* 成长值bar条样式 */
+		.growth_ctx{
+			width:100%;
+		}
+		.growth_ctx .growthBar{
+			width:100%;
+			height:12px;
+			border:1px solid #dddddd;
+			border-radius:3px;
+			background-color:#F6F6F6;
+			overflow:hidden;
+		}
+		.growth_ctx .growthBar li{
+			width:16.6%;
+			height:12px;
+			float:left;
+			list-style:none;
+			border-right:1px solid #ddd;
+		}
+		.growth_ctx .growthBar .first{
+			background-color:#FFEABF;
+		}
+		.growth_ctx .growthBar .second{
+			background-color:#FAD897;
+		}
+		.growth_ctx .growthBar .third{
+			background-color:#FC9530;
+		}
+		/* bar条下面的等级 */
+		.growth_ctx .growthLevel{
+			width:100%;
+			margin-top:3px;
+		}
+		.growth_ctx .growthLevel img{
+			width:780px;
+		}
+		/* 等级下面对应的分数 */
+		.growth_ctx .growthLevelNumber{
+			width:100%;
+			margin-top:5px;
+		}
+		.growth_ctx .growthLevelNumber ul{
+			overflow:hidden;
+			width:900px;
+		}
+		.growth_ctx .growthLevelNumber ul li{
+			width:14%;
+			float:left;
+			list-style:none;
+			font-size:13px;
+			color:rgb(153, 153, 153);
+		}
+	/* 我的特权样式 */
+	.privilege{
+		width:778px;
+		padding:20px 20px;
+	}
+		.privilege .priv_ctx{
+			overflow:hidden;
+			border:1px solid #ddd;
+			border-right:0;
+			border-bottom:0;
+			margin-top:10px;
+		}
+		.privilege .priv_ctx li{
+			text-align:center;
+			width:193px;
+			height:180px;
+			background-color:#F6F6F6;
+			float:left;
+			list-style:none;
+			border-right:1px solid #ddd;
+			border-bottom:1px solid #ddd;
+
+		}
+		.priv_icon{
+			position: relative;
+			top:30px;
+		}
+		.priv_name{
+			line-height:40px;
+			font-size:14px;
+			font-weight:bold;
+			position: relative;
+			top:30px;
+		}
+		.priv_detail{
+			/* line-height:30px; */
+			font-size:12px;
+			color:#999999;
+			position: relative;
+			top:30px;
+		}
+	/* 成长值发放规则示例 */
+	.growthRule{
+		padding:20px 20px;
+	}
+		.growthRule .rule_ctx{
+			width:100%;
+			overflow:hidden;
+			border:1px solid #dddddd;
+			margin-top:10px;
+		}
+		/* 案例table的样式 */
+		.rule_ctx .example{
+			width:70%;
+			float:left;
+			border-right:1px solid #dddddd;
+		}
+			.example th{
+				font-size:14px;
+				padding:12px 20px;
+				text-align:left;
+				background-color:#F7F7F7;
+			}
+			.example td{
+				font-size:12px;
+				color:#666;
+				border-top:1px solid #dddddd;
+				padding:12px 20px;
+				text-align:left;
+			}
+			.example td a{
+				color:#2DB5A8;
+			}
+			.example td a:hover{
+				text-decoration:underline;
+			}
+		/* ‘手机购买送成长值’ 部分的样式 */
+		.rule_ctx .app_bar{
+			width:29.5%;
+			float:left;
+			padding:30px 0 0 0;
+			text-align:center;
+		}
+			.app_bar h4{
+				line-height:25px;
+				color:#555555;
+			}
+			.app_bar .iphone,.app_bar .android{
+				display:inline-block;
+				width:160px;
+				height:16px;
+				font-size:14px;
+				font-weight:bold;
+				color:white;
+				background-color:#2EBEB0;
+				border:0;
+				border-bottom:1px solid #787878;
+				margin:5px;
+				padding:10px 0;
+			}
+			.app_bar .mark{
+				margin:5px 0;
+			}
+			.app_bar p{
+				font-size:12px;
+				color:#999999;
+			}
+		/* 附加说明部分的样式 */
+		.rule_ctx .additional{
+			width:100%;
+			float:left;
+			border-top:1px solid #dddddd;
+			font-size:12px;
+			color:#666;
+			padding:10px 20px;
+			line-height:20px;
+		}
+	/* 我的成长记录 */
+	.growthRecord{
+		padding:20px 20px;
+	}
+		/* 表格中的样式 */
+		.growthRecord table{
+			border:1px solid #ddd;
+			width:100%;
+			
+			border-right:1px solid #dddddd;
+		}
+			.growthRecord table th{
+				font-size:14px;
+				padding:12px 20px;
+				text-align:left;
+				background-color:#F7F7F7;
+			}
+			.growthRecord table td{
+				font-size:12px;
+				color:#666;
+				border-top:1px solid #dddddd;
+				padding:12px 20px;
+				text-align:left;
+			}
+			.growthRecord table td a{
+				color:#2DB5A8;
+			}
+			.growthRecord table td a:hover{
+				text-decoration:underline;
+			}
+		/* 分页部分的样式 */
+		.growthRecord .pagination{
+			overflow:hidden;
+		}
+		.growthRecord .pagination li{
+			float:left;
+			list-style:none;
+			margin:10px 5px;
+		}
+		.growthRecord .pagination li a{
+			display:inline-block;
+			font-size:18px;
+			font-weight:bold;
+			padding:7px 15px;
+			border:1px solid #ddd;
+		}
+		.nocurr{
+			color:#2BB8AA;
+		}
+		.current{
+			color:white;
+			background-color:#2BB8AA;
+		}
+	

@@ -1,0 +1,56 @@
+@import url('share.css');
+
+.moreInfo{
+	width:978px;
+	margin-top:20px;
+	border:1px solid #EEEEEE;
+	height:190px;
+	overflow:hidden;
+}
+.moreInfo .infoDetail{
+	width:16%;
+	float:left;
+	margin-left:15px;
+	line-height:17px;
+}
+.moreInfo .infoDetail th{
+	height:50px;
+	font-size:14px;
+	text-align:left;
+}
+.moreInfo .infoDetail tr td a{
+	font-size:13px;
+	color:#999999;
+}	
+	.moreInfo .infoDetail tr td a:hover{
+		text-decoration: underline;
+	}
+	.infoDetailS{
+		float:left;
+	}
+	.infoDetailS .forLine{
+		border-left:1px solid #EEEEEE;
+		padding-left: 40px;
+	}
+	.infoDetailS .contact{
+		margin-top:20px;
+	}
+	.infoDetailS .lesson{
+		margin-top:20px;
+	}
+	.infoDetailS .lesson a:hover{
+		text-decoration:underline;
+	}
+
+.copyright,.copyright a{
+	text-align:center;
+	color:#929292;
+	line-height:70px;
+}
+.copyright a:hover{
+	text-decoration:underline;
+}
+.spe{
+	text-align:center;
+}
+

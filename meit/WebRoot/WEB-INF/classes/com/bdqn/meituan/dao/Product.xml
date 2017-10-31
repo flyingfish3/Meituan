@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.meituan.dao.IProductDAO">
+	<!--查询某个商品的详细信息  -->
+	<resultMap type="g" id="goods_sub">
+		<result property="goodsid" column="goodsid"/>
+		<collection property="gpacks" column="goodsid"
+			select="findPacks"
+		></collection>
+		<collection property="gpics"  column="goodsid"
+		    select="findPics"></collection>
+	</resultMap>
+	<select id="findSingle" parameterType="int" resultMap="goods_sub">
+		SELECT FUNC_TOPTYPE(G.GOODSID) AS TOPTYPE,
+		       FUNC_TOPTYPENAME(G.GOODSID) AS TOPTYPENAME,
+		       FUNC_SECTYPE(G.GOODSID) AS SECTYPE,
+		       FUNC_SECTYPENAME(G.GOODSID) AS SECTYPENAME,
+		       G.TYPEID,
+		       GT.TYPENAME,
+		       G.GOODSID,
+		       G.GOODSNAME,
+		       G.GOODSADV,
+		       G.DEFAULTPIC,
+		       NVL(G.PROPRICE, 0),
+		       G.GROPRICE,
+		       G.STOREPRICE,
+		       NVL((G.STOREPRICE - G.GROPRICE), 0) AS CUT,
+		       FUNC_SALES(G.GOODSID) AS SALES,
+		       FUNC_EVAL(G.GOODSID) AS EALSCORES,
+		       FUNC_EVALPEOPLE(G.GOODSID) AS EVALNUMS,
+		       TO_CHAR(G.EXPIRE, 'yyyy-mm-dd')
+		  FROM GOODS G
+		 INNER JOIN GOODSTYPE GT
+		    ON G.TYPEID = GT.TYPEID
+		 WHERE G.GOODSID =#{goodsid}
+	</select>
+	<!-- 查询一个商品的套餐 -->
+	<select id="findPacks" parameterType="int" resultType="gpacks">
+		 SELECT DISTINCT P.PACKNAME FROM PACKAGE P WHERE P.GOODSID = #{goodsid}
+	</select>
+	<!-- 查询一个商品的展示图片 -->
+	<select id="findPics" parameterType="int" resultType="gpics">
+		 SELECT DISTINCT GP.GOODSPATH FROM GOODSPICS GP WHERE GP.GOODSID =#{goodsid}	
+	</select>
+	
+	
+	<!-- 查询该商品对应的店铺的信息 -->
+	<resultMap type="st" id="store_sub">
+		<result property="storeid" column="storeid"/>
+		<collection property="stpics" column="storeid" select="findStorePics"></collection>
+		<collection property="stgoods" column="storeid" select="findStorOtherGoods"></collection>
+	</resultMap>
+	<select id="findStore"  parameterType="int" resultMap="store_sub">
+		  SELECT FUNC_TOPAREA(ST.STOREID) AS TOPAREA,
+	         FUNC_SECAREA(ST.STOREID) AS SECAREA,
+	         FUNC_THIRDAREA(ST.STOREID) AS THIRDAREA,
+	         ST.STOREADD,
+	         ST.STOREID,
+	         ST.STORENAME,
+	         FUNC_STEVALPEOPLE(ST.STOREID) AS EVALNUMS,
+	         FUNC_STEVAL(ST.STOREID) AS EVALSCORES,
+	         ST.SUBWAYADD,
+	         ST.TEL,
+	         ST.STORECTX
+	    FROM STORES ST
+	   WHERE ST.STOREID = (SELECT STOREID FROM GOODS WHERE GOODS.GOODSID =#{goodsid})
+	</select>
+	<select id="findStorePics" parameterType="int" resultType="stpics">
+		SELECT SP.STOREID, SP.IMGPATH
+		  FROM STOREPICS SP
+		 WHERE SP.STOREID = (SELECT STOREID FROM GOODS WHERE GOODS.GOODSID =#{goodsid})
+		
+	</select>
+	<select id="findStorOtherGoods" parameterType="int" resultType="g">
+		<![CDATA[
+			SELECT TEMP.GOODSID,
+		           TEMP.GOODSNAME,
+		           TEMP.GROPRICE,
+		           TEMP.STOREPRICE,
+		           TEMP.SALES
+		      FROM (SELECT G.GOODSID,
+		                   G.GOODSNAME,
+		                   G.GROPRICE,
+		                   G.STOREPRICE,
+		                   FUNC_SALES(G.GOODSID) AS SALES
+		              FROM GOODS G
+		             WHERE G.STOREID =
+		                   (SELECT STOREID FROM GOODS WHERE GOODS.GOODSID =#{goodsid})) TEMP
+		     WHERE TEMP.GOODSID !=#{goodsid}
+		       AND ROWNUM <= 5
+	      ]]>
+	</select>
+</mapper>

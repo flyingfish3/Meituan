@@ -1,0 +1,22 @@
+*{
+	padding:0;
+	margin:0;
+	margin:auto;
+	font-size:12px;
+	font-family:'宋体';
+	color:#666;
+}
+a:link{
+	text-decoration:none;
+	color:#666;
+}
+a:hover{
+	color:#2BB8AA;
+}
+
+ul li{
+	float:left;
+	list-style:none;
+	margin:0;
+	padding:0;
+}

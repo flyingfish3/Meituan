@@ -1,0 +1,1046 @@
+
+*{
+	margin:0 auto;
+	padding:0;
+}
+ul{
+	overflow:hidden;
+	}
+
+.container{
+	width:980px;
+	height:100%;
+}
+	.nav{
+		width:980px;
+		height:40px;
+		line-height:40px;
+	}
+	.deal{
+		width:100%;
+		overflow:hidden;
+	}
+		.deal .deal_title{
+			height:40px;
+			line-height:40px;
+			font-size:28px;
+			font-weight:700;
+		}
+		.deal .deal_advice{
+			height:30px;
+			line-height:30px;
+			font-size:16px;
+		}
+		.deal_detail{
+			width:100%;
+		}
+			/* 商品详情中的左侧图片样式 */
+			.deal_detail .deal_pic{
+				width:48%;
+				height:100%;
+				float:left;
+				margin-top:10px;
+			}
+				.deal_detail .deal_pic .deal_cover_wrapper{
+					width:100%;
+					height:280px;
+					/* overflow:hidden; */
+				}
+				.deal_detail .deal_pic .deal_cover{
+					width:100%px;
+					height:290px;
+					overflow:hidden;
+					/* position: relative; */
+				}
+				.deal_detail .deal_pic .deal_cover li{
+					float:left;
+					margin-left:5px;
+					margin-right:6px;
+					position: absolute;
+				}
+				
+				/* 左侧轮播图片上面的指示箭头 */
+				.deal_pointer{
+					position: relative;
+					z-index:2;
+					top:-150px;
+					opacity:0;
+					overflow:hidden;
+				}
+					.deal_pointer a{
+						display:inline-block;
+						width:60px;
+						height:60px;
+						text-align:center;
+						background:black;
+						color:white;
+						font-size:50px;
+						font-weight:bold;
+					}
+					.deal_pointer .poiLeft{
+						float:left;
+					}
+					.deal_pointer .poiRight{
+						float:right;
+					}
+				/* 轮播广告下面缩略图的样式 */
+				.deal_detail .deal_pic .deal_thumb{
+					margin-top:20px;
+					width:100%;
+				}
+				.deal_detail .deal_pic .deal_thumb li{
+					margin-left:7px;
+					margin-right:7px;
+				}
+				.deal_detail .deal_pic .deal_thumb li .normal{
+					border:1px solid #ddd; 
+					padding:2px;
+				}
+				/* 鼠标浮动到商品缩略图上的时候，商品图略图的样式变化，供Js调用(注意样式权重问题) */
+				.deal_detail .deal_pic .deal_thumb li .current{
+					border:1px solid #2EBFB1;
+					padding:2px;
+				}
+			/* 商品详情中右侧的订单样式 */
+			.deal_detail .deal_order{
+				margin-top:10px;
+				width:49%;
+				height:100%;
+				float:right;color:#999999;
+			}
+				.deal_detail .deal_order .order_leading{
+					font-size:12px;
+					color:#999999;
+				}
+				.deal_order .deal_order_price,.deal_order_cut,.deal_order_rate,
+				.deal_order_expiry,.deal_order_scheme,.deal_order_amount,.deal_order_ensure{
+					width:100%;
+					height:50px;
+					color:#999999;
+					line-height:50px;
+				}
+				.deal_order i{
+					color:#F76120;
+					font-style:normal;
+				}	
+					/* 促销价 */
+					.deal_order .deal_order_price .pr1{
+						font-size:24px;
+						font-weight:bold;
+						margin-left:25px;
+					}
+					.deal_order .deal_order_price .prt2{
+						color:#32D3C3;
+					}
+					.deal_order .deal_order_price .pr2{
+						color:#32D3C3;
+						/* text-decoration:line-through; */
+					}
+					/* .deal_order .deal_order_price .pr3{
+						text-decoration:line-through;
+					} */
+					/* 优惠 */
+					.deal_order .deal_order_cut .cut2{
+						background-color:#AAACB2;
+						color:white;
+						padding:5px 3px;
+						margin-left:30px;
+					}
+					.deal_order .deal_order_cut .to{
+						border:1px solid red;
+						width:260px;
+						position: relative;
+						top:-50px;
+						left:105px;
+						background-color:white;
+					}
+					.deal_order .deal_order_cut .to .to_ctx{
+						font-size:20px;
+						overflow:hidden;
+					}
+					.to .to_ctx i{
+						display:block;
+						margin-left:10px;
+						font-size:16px;
+						font-weight:bold;
+						float:left;
+					}
+					.to .to_ctx .remind{
+						display:block;
+						float:left;
+						font-size:14px;
+						font-weight:bold;
+						position: relative;
+						left:20px;
+					}
+					.to .to_ctx .remainTime{
+						display:block;
+						width:80px;
+						height:35px;
+						background-color:black;
+						margin-left:5px;
+						color:white;
+						text-align:center;
+						line-height:35px;
+						font-size:20px;
+						font-weight:bold;
+						float:left;
+						position: relative;
+						top:7px;
+						left:25px;
+					}
+					.to .to_ctx .arrdown{
+						display:block;
+						float:right;
+						position: relative;
+						right:10px;
+						transition:all 0s;
+					}
+					.sss{
+						transform:rotate(180deg);
+					}
+					.to .to_way{
+						overflow:hidden;
+						padding:10px;
+						display:none;
+					}
+					.to .to_way ul{
+						float:left;
+						width:60%;
+					}
+					.to .to_way ul li{
+						float:none;
+						overflow:hidden;
+						padding:3px 0;
+					}
+					.to .to_way ul li i{
+						display:block;
+						width:15px;
+						height:15px;
+						background-color:#FFA43B;
+						border-radius:50%;
+						color:white;
+						font-size:3px;
+						font-style:normal;
+						font-weight:normal;
+						line-height:15px;
+						text-align:center;
+						float:left;
+					}
+					.to .to_way ul li span{
+						display:block;
+						float:left;
+						width:110px;
+						font-size:10px;
+						line-height:20px;
+						margin-left:5px;
+					}
+					.to .to_way img{
+						width:38%;
+						float:left;
+					}
+					/* 评价 */
+					.deal_order .deal_order_rate{
+						border:1px solid #DDDDDD;
+						border-left:0;
+						border-right:0;
+						height:40px;
+						margin-top:5px;
+						margin-right:5px;
+
+					}
+					.deal_order .deal_order_rate .rt1{
+						display:inline-block;
+						width:100px;
+						text-align:left;
+						margin-left:50px;
+					}
+					.deal_order .deal_order_rate .rt2{
+						display:inline-block;
+						width:100px;
+						text-align:center;
+					}
+					.deal_order .deal_order_rate .rt3{
+						display:inline-block;
+						width:100px;
+						text-align:right;
+					}
+					/* 有效期 */
+					.deal_order .deal_order_expiry .exp1{
+						margin-right:19px;
+						color:#999999;
+					}
+					.deal_order .deal_order_expiry .exp2{
+						color:black;
+						font-size:12px;
+					}
+					.deal_order .deal_order_expiry .exp2 i{
+						margin-left:5px;
+					}
+					/* 套餐 */
+					.deal_order .deal_order_scheme span{
+						margin-right:30px;
+					}
+					.deal_order .deal_order_scheme input{
+						width:70px;
+						padding:5px;
+						margin-right:8px;
+					}
+						.choosenPackage{
+							border:2px solid #2EBFB1;
+						}
+					/* 数量 */
+					.deal_order .deal_order_amount{
+						height:90px;
+						line-height:0;
+					}
+					.deal_order .deal_order_amount .amo1{
+						margin-right:30px;
+						line-height:40px;
+						color:#999999;
+					}	
+					.deal_order .deal_order_amount .amount{
+						display:block;
+						width:90px;
+						height:26px;
+						border:1px solid #DDDDDD;
+						position: relative;
+						top:-35px;
+						left:-125px;
+						
+					}
+					.deal_order .deal_order_amount .amount #a1,#a3{
+						border:none;
+						width:25%;
+						height:26px;
+					}
+					.deal_order .deal_order_amount .amount #a2{
+						border:none;
+						width:50%;
+						height:21px;
+						text-align:center;
+					}
+					.deal_order .deal_order_amount form .buy{
+						position: relative;
+						top:-35px;
+					}
+					.deal_order .deal_order_amount form .buy input{
+						color:white;
+						font-size:20px;
+						width:150px;
+						height:40px;
+						background-color:#2EBFB1;
+						margin-left:60px;
+						border:0;
+					}
+					.deal_order .deal_order_amount form .buy .car{
+						position: relative;
+						top:14px;
+						left:5px;
+					}
+					.deal_order .deal_order_amount form .buy .share img{
+						position: relative;
+						top:2px;
+					}
+					/* 承诺 */
+					.deal_order .deal_order_ensure{
+						height:40px;
+						margin-top:10px;
+						border-top:1px solid #DDDDDD;
+					}
+					.deal_order .deal_order_ensure span{
+						display:block;
+						float:left;
+						line-height:40px;
+					}
+					.deal_order .deal_order_ensure img{
+						float:left;
+						margin-top:12px;
+						margin-left:15px;
+					} 
+	
+	/***************************关于商品的更多介绍样式开始***********************************/
+	.more{
+		width:100%;
+		overflow:hidden;
+		margin-top:25px;
+	}
+	.more .more_ctx{
+		width:73%;
+		float:left;
+	}
+		/*************重要通知部分的样式 */
+		.more .more_ctx	.attention{
+			width:100%;
+			height:100px;
+			border:1px solid #DDDDDD;
+			overflow:hidden;
+
+		}
+			.more .more_ctx	.attention .atten_log{
+				width:25%;
+				height:100%;
+				border-right:1px solid #DDDDDD;
+				float:left;
+			}
+				.more .more_ctx	.attention .atten_log img{
+					margin-top:15px;
+					margin-left:65px; 
+				}
+			.more .more_ctx	.attention .attenCtx{
+				width:74%;
+				height:100%;
+				line-height:25px;
+				float:left;
+			}
+				.more .more_ctx	.attention .attenCtx p{
+					margin:30px 10px;
+					text-indent:1em;
+					font-size:14px;
+				}
+		/**********该商家的其他团购 */
+		.more .more_ctx .other_purchase{
+			margin-top:30px;
+			margin-bottom:40px;
+			overflow:hidden;
+		}
+			/* 团购内容处标题 */
+			.more .more_ctx .other_purchase .purchase_title{
+				height:60px;
+				line-height:70px;
+				border-bottom:2px solid #DDDDDD;
+				border-top:1px solid #DDDDDD;
+			}
+			.more .more_ctx .other_purchase .purchase_title span{
+				font-size:18px;
+			}
+			.more .more_ctx .other_purchase .purchase_title .subtitle{
+				margin-left:260px;
+			}
+			.more .more_ctx .other_purchase .purchase_title .subtitle i{
+				font-style:normal;
+				font-size:14px;
+				width:85px;
+				text-align:right;
+				display:inline-block;
+			}
+			/* 团购内容处具体内容 */
+			.more .more_ctx .other_purchase ul li{
+				width:100%;
+				line-height:35px;
+				border-bottom:1px solid #DDDDDD;
+			}
+			.more .more_ctx .other_purchase ul li span{
+				font-size:14px;
+				display:inline-block;
+				width:90px;
+				text-align:center;
+			}
+			.more .more_ctx .other_purchase ul li .pc_title{
+				text-align:left;
+				width:420px;
+			}
+			.more .more_ctx .other_purchase ul li .pc_price{
+				color:#F76121;
+				font-weight:bold;
+				font-size:14px;
+			}
+			.other_purchase ul li .pc_price i{
+				color:#F76121;
+				font-weight:bold;
+				font-style:normal;
+				font-size:14px;
+			}
+		/***********下方内容导航栏 */
+		.more .more_ctx .navbar{
+			width:710px;
+			height:40px;
+			border:2px solid #DDDDDD;
+			margin-bottom:40px;
+			overflow:hidden;
+		}
+			.more .more_ctx .navbar ul{
+				width:710px;
+				float:left;
+			}
+			.more .more_ctx .navbar ul li{
+				width:19.86%;
+				height:100%;
+				line-height:38px;
+				text-align:center;
+				border-right:1px solid #DDDDDD;
+				background-color:#F9F9F9;
+			}	
+			.more .more_ctx .navbar ul .last{
+				border-right:0;
+			}
+			.more .more_ctx .navbar ul li a{
+				font-size:16px;
+			}
+			/* 暂时隐藏起来的样式 */
+			.more .more_ctx .navbar .navbuy{
+				height:40px;
+				border:2px solid #DDDDDD;
+				border-left:0;
+				background-color:#F9F9F9;
+				width:270px;
+				float:right;
+				position:absolute;
+				top:-2px;
+				left:450px;
+				z-index:-1;
+				text-align:center;
+				display:none;
+			}
+			.more .more_ctx .navbar .navbuy a{
+				position: relative;
+				top:6px;
+			}
+		/**************导航栏对应的主要内容*************/
+		.more .more_ctx .deal_stuff{
+			width:100%;
+			/* height:100%; */
+		}
+			/* 商家位置 */
+			.more .more_ctx .deal_stuff .blk_detail .location{
+				width:100%;
+				height:100%;
+				border-bottom:1px solid #DDDDDD;
+			}
+				/* 商家位置标题 */
+				.main h2.content_title{
+					height:30px;
+					line-height:20px;
+					font-size:18px;
+					border-bottom:2px solid gray;
+					padding-top:50px;
+				}
+				/* 商家位置具体内容 */
+				.blk_detail .location_detail{
+					width:100%;
+					height:300px;
+					overflow:hidden;
+				}
+				.blk_detail .location_detail .location_detail_map,.location_detail_para{
+					float:left;
+				}
+				.blk_detail .location_detail table.location_detail_para{
+					width:260px;
+					margin-left:10px;
+				}
+				.blk_detail .location_detail table.location_detail_para a{
+					color:#2EBFB1;
+				}
+				table.location_detail_para th{
+					width:100%;
+					text-align:left;
+					height:35px;
+				}
+				table.location_detail_para th a{
+					font-size:14px;
+				}
+				table.location_detail_para tr td.loc_title{
+					width:35px;
+					height:20px;
+					line-height:25px;
+				}
+				table.location_detail_para tr td.loc_detail{
+					width:200px;
+					height:25px;
+				}
+				table.location_detail_para tr td.loc_eavscores{
+					font-weight:bold;
+					color:#f76120;
+					font-size:14px;
+				}
+				table.location_detail_para tr td.loca{
+					width:200px;
+					height:35px;
+					line-height:20px;
+				}
+			/* 购买须知*/
+			.more .more_ctx .deal_stuff .blk_detail .buynotice{
+				/* margin-top:30px; */
+				width:100%;
+			}
+				.buynotice dl{
+					overflow:hidden;
+				}
+				.buynotice dl dt{
+					width:160px;
+					line-height:20px;
+					float:left;
+					font-size:14px;
+					font-weight:bold;
+					background-color:#F9F9F9;
+					border-bottom:1px solid #DDDDDD;
+					border-right:1px solid #DDDDDD;
+					text-indent:10px;
+					padding:10px 0;
+				}
+				.buynotice dl dd{
+					width:530px;
+					line-height:20px;
+					float:left;
+					font-size:14px;
+					border-bottom:1px solid #DDDDDD;
+					padding:10px 10px;
+				}
+				.warmRemind{
+					height:60px;
+				}
+				.businessService{
+					height:40px;
+				}
+			/* 本单详情*/
+			.more .more_ctx .deal_stuff .blk_detail .orderdetail{
+				/* margin-top:30px; */
+				width:100%;
+				/* height:580px; */
+			}
+				/* 美味尽享 */
+				h4.inner_content_title{
+					overflow:hidden;
+					margin-top:20px;
+				}
+				h4.inner_content_title span.title_bar{
+					display:block;
+					width:1%;
+					height:40px;
+					background-color:#2BB8AA;
+					float:left;
+				}
+				h4.inner_content_title span.title_ctx{
+					display:block;
+					width:99%;
+					height:40px;
+					line-height:40px;
+					text-indent:5px;
+					font-size:14px;
+					background-color:#EEEEEE;
+					float:left;
+				}
+				/* 套餐内容 */
+				.orderdetail_content_package .package_content{
+					margin-top:10px;
+					overflow:hidden;
+				}
+					.orderdetail_content_package .package_content table{
+						width:100%;
+					}
+					.orderdetail_content_package .package_content table tr th{
+						background-color:#EEEEEE;
+						height:40px;
+						line-height:40px;
+						padding:0 5px;
+					}
+					.orderdetail_content_package .package_content table tr td{
+						padding:10px 5px;
+						border-bottom:1px solid #DDDDDD;
+					}
+					.package_content table tr .pack_ctx_title{
+						font-size:14px;
+						text-align:left;
+						width:350px;
+					}
+					.package_content table tr .pack_ctx_price{
+						text-align:center;
+						width:100px;
+						font-size:14px;
+					}
+					.package_content table tr .pack_ctx_amount{
+						text-align:center;width:100px;
+						font-size:14px;
+					}
+					.package_content table tr .pack_ctx_count{
+						text-align:center;width:100px;
+						font-size:14px;
+					}
+					.package_content table tr .pack_ctx_name1{
+						text-align:left;
+						width:150px;
+						font-weight:bold;
+						font-size:14px;
+						border-right:1px solid #DDDDDD;
+					}
+					.package_content table tr .pack_ctx_name2{
+						text-align:left;
+						width:150px;
+						font-size:14px;
+					}
+					.countall{
+						font-size:14px;
+					}
+				.package_content ul{
+					padding-left:20px;
+					padding-top:10px;
+				}
+				.package_content ul li{
+					float:none;
+					font-size:14px;
+					line-height:20px;
+					list-style:disc;
+				}
+			/* 美团推荐 */
+			.orderdetail_content_recommend{
+				width:100%;
+			}
+			.orderdetail_content_recommend img{
+				width:100%;
+			}
+			.orderdetail_content_recommend .introduce_detail h4{
+				font-size:12px;
+				height:30px;
+				line-height:30px;
+			}
+		/* *********************商家介绍*/
+		.sellerIntroduction{
+			/* margin-top:20px; */
+		}
+			.sellerIntroduction .introduce_detail img{
+				width:100%;
+				margin-top:10px;
+			}
+			.sellerIntroduction .introduce_detail p{
+				margin-top:10px;
+				font-size:14px;
+				line-height:20px;
+				color:gray;
+				text-indent:2em;
+			}
+
+		/* *******消费评价 */
+		.deal_stuff .main .rate{
+			width:100%;
+			/* margin-top:20px; */
+		}
+			/* 消费的标题部分 */
+			.rate .content_subtitle{
+				position: relative;
+				left:550px;
+				top:-25px;
+			}
+			.rate .content_subtitle a{
+				color:#2BB8AA;
+			}
+			/* 星星评价部分 */
+			.rate .rate_star{
+				width:100%;
+				padding:15px 0;
+				overflow:hidden;
+			}
+			.rate .rate_star li{
+				text-align:center;
+				width:33.2%;
+				height:100px;
+				border-right:1px solid #DDDDDD;
+			}
+			.rate .rate_star .last{
+				border:0;
+			}
+			/* 大家都在说 */
+			.everyonesay{
+				width:100%;
+				overflow:hidden;
+			}
+			.everyonesay span{
+				display:block;
+				width:13%;
+				float:left;
+				text-align:center;
+			}
+			.everyonesay ul{
+				width:86%;
+				float:left;
+			}
+			.everyonesay ul li{
+				border:1px solid #FB7412;
+				padding:2px;
+				margin-left:3px;
+				margin-top:3px;
+			}
+			.everyonesay ul li a{
+				color:#FB7412;
+			}
+			.everyonesay ul .sec{
+				border:1px solid #DDDDDD;
+			}
+			.everyonesay ul .sec a{
+				color:gray;
+			}
+			/* 评论分页 */
+			.rate .ratePage{
+				width:100%;
+			}
+			/* 评论分页的头部分类依据 */
+			.ratePage .rateFilter{
+				width:100%;
+				margin:20px 0;
+			}
+			.ratePage .rateFilter ul li{
+				display:block;
+				width:85px;
+				height:10%;
+				line-height:30px;
+				text-align:center;
+				background-color:#F9F9F9;
+				border-right:1px solid #DDDDDD;
+			}
+			.ratePage .rateFilter ul .last{
+				width:59%;
+				text-align:right;
+				padding-right:20px;
+				border-right:0;
+			}
+			/* 评论 */
+			.ratePage .rateCtx{
+				width:100%;
+			}
+			.rateCtx li{
+				float:none;
+				border-bottom:1px solid #DDDDDD;
+				overflow:hidden;
+				padding:15px 5px;
+			}
+			.rateCtx li .userinfo{
+				float:left;
+				width:10%;
+				text-align:center;
+			}
+			.rateCtx li .userinfo span{
+				display:inline-block;
+			}
+			.rateCtx li .userrate{
+				float:left;
+				width:88%;
+				margin-left:10px;
+			}
+			.rateCtx li .userrate span{
+				display:block;
+				margin:5px;
+			}
+			.rateCtx li .userrate span i{
+				font-style:normal;
+			}
+			.userRateStar img{
+				position: relative;
+				top:3px;
+			}
+			/* 页面选择bar--首页/末页 */
+			.ratePage .rateBar{
+				width:100%;
+				padding:20px 0;
+				border-bottom:1px solid #DDDDDD;
+
+			}
+			.rateBar ul{
+				 margin-left:200px;
+			}
+			.rateBar ul li{
+				padding:3px 5px;
+				border:1px solid #DDDDDD;
+				margin-right:5px;
+			}
+			.rateBar ul li a{
+				color:#2BB8AA;
+				font-weight:bold;
+			}
+		/* 评论下方价格导购 */
+		.deal_buy_buttom table{
+			width:100%;
+			padding:20px 10px;
+		}
+			.deal_buy_buttom table tr .now_price{
+				font-weight:bold;
+				font-size:24px;
+				color:#F76121;
+				width:100px;
+			}
+			.moneysign{
+				font-size:16px;
+				color:#F76121;
+				font-weight:normal;
+			}
+			.deal_buy_buttom .price,.deal_buy_buttom .count,.deal_buy_buttom .sale{
+				font-weight:bold;
+				font-size:14px;
+				color:#999999;
+				width:100px;
+			}
+		/* 美团app扫码 */
+		.mainbox .app{
+			width:100%;
+			height:100%;
+		}
+			.mainbox .app img{
+				width:100%;
+			}
+	/****************************侧边栏的样式开始*********************/
+	.more .more_sidebar{
+		width:24%;
+		float:right;
+		margin-left:20px;
+	}
+		/* 手机app下载部分 */
+		.more_sidebar .appdownload{
+			border:1px solid #DDDDDD;
+			border-bottom:0;
+		}
+		.more_sidebar .appdownload li{
+			padding:5px 15px;
+			border-bottom:1px solid #DDDDDD;
+		}
+		/* 疑难解答部分样式 */
+		.more_sidebar .answer{
+			width:204px;
+			margin-top:10px;
+			border:1px solid #DDDDDD;
+			padding:20px 15px;
+		}
+		.more_sidebar .answer h4{
+			font-size:15px;
+		}
+		.more_sidebar .answer p{
+			margin-top:10px;
+		}
+		.more_sidebar .answer a{
+			color:#00C3B0;
+			font-size:15px;
+		}
+		.more_sidebar .answer img{
+			position:relative;
+			top:2px;
+		}
+		/* 最近浏览部分样式 */
+		.more_sidebar .rec{
+			width:204px;
+			margin-top:10px;
+			border:1px solid #DDDDDD;
+			padding:20px 15px;
+		}
+		.more_sidebar .rec h4 span{
+			font-size:15px;
+		}
+		
+		.more_sidebar .rec h4 a{
+			color:#00C3B0;
+			font-size:12px;
+			position: relative;
+			left:100px;
+			font-weight:normal;
+		}
+		.more_sidebar .rec .rec_ctx li{
+			padding:15px 0;
+			border-bottom:1px dotted #DDDDDD;
+		}
+		.more_sidebar .rec .rec_ctx dl{
+			overflow:hidden;
+		}
+		.more_sidebar .rec .rec_ctx dt{
+			float:left;
+			width:42%;
+		}
+		.more_sidebar .rec .rec_ctx dd{
+			width:53%;
+			float:left;
+			margin-left:5px;
+		}
+		.more_sidebar .rec .rec_ctx .rec_title{
+			height:35px;
+		}
+		.more_sidebar .rec .rec_ctx i{
+			color:#F76121;
+			font-style:normal;
+		}
+		.more_sidebar .rec .rec_ctx span,.more_sidebar .rec .rec_ctx del{
+			color:gray;
+		}
+
+/* 加入购物车成功提示 */
+.carbox{
+	display: none;
+	width:1500px;
+	height:1000px;
+	position:fixed;
+	top:0;
+	z-index:3;
+}
+	.addCarSuccess{
+		width:100%;
+		height:600px;
+		background-color:#BBBBBB;
+		opacity:0.4;
+	}
+	.mess{
+		display:block;
+		width:600px;
+		height:100px;
+		background-color:white;
+		border:8px solid #BBBBBB;
+		position: absolute;
+		top:170px;
+		left:300px;
+		padding:15px;
+	}
+		.mess .closeCarbox{
+			text-align:right;
+		}
+		.mess .prompt{
+			overflow:hidden;
+			margin-top:10px;
+		}
+			.prompt .ok,.prompt .okfont,.prompt .con,.prompt .count{
+				float:left;
+			}
+			.prompt .ok{
+				margin:0 10px;
+			}
+			.prompt .okfont{
+				height:70px;
+				margin-top:10px;
+			}
+			.x_title{
+				font-size:20px;
+				color:black;
+			}
+			.s_title{
+				line-height:20px;
+			}
+			.prompt .con{
+				margin-left:40px;
+				margin-top:15px;
+			}
+			.prompt .count{
+				margin-left:10px;
+				margin-top:15px;
+			}
+/* 狗皮膏药广告 */
+.fixadv{
+	position: fixed;
+	bottom:0;
+	z-index:3;
+}
+	.fixadv .advintro{
+		position: absolute;
+		z-index:10;
+		left:180px;
+		top:70px;
+		font-size:30px;
+		color:#CD6453;
+	}
+	.fixadv .closeadv{
+		position:absolute;
+		top:10px;
+		left:1300px;
+		color:#f6f6f6;
+		opacity:0.5;
+		font-size:20px;
+		font-weight:bold;
+		cursor:pointer;
+	}
+.licolor{
+	background-color:#eee;
+}
+.spancolor{
+	color:#2EBFB1;
+}

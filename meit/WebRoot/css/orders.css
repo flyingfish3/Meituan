@@ -1,0 +1,157 @@
+*{
+	margin:0;
+	padding:0;
+	margin-left:auto;
+	margin-right:auto;
+}
+a{
+	text-decoration:none;
+}
+/* 订单页面整体样式 */
+.orders{
+	width:778px;
+	/* height:1000px; */
+	padding:20px;
+	border:1px solid #ddd;
+}
+	/* 过滤订单部分的样式 */
+	.orders .orders_filter{
+		font-size:12px;
+		color:#999;
+	}
+		.orders .orders_filter select{
+			width:100px;
+			height:20px;
+			font-size:12px;
+			margin-right:10px;
+		}
+		.orders .orders_filter a{
+			color:#f76120;
+			margin-right:5px;
+		}
+		.orders .orders_filter strong{
+			color:#f76120;
+		}
+	/* 订单头部样式 */
+	.orders_wrapper{
+		margin-top:20px;
+	}
+		/* 头部整体样式 */
+		.orders_wrapper .orders_head{
+			background-color:#F9F9F9;
+			overflow:hidden;
+			border-top:1px solid #ddd;
+		}
+		/* 单元格样式 */
+		.orders_wrapper .order_cell{
+			float:left;
+			font-size:12px;
+			color:#999;
+			padding:10px 0;
+			text-align:center;
+		}
+		/* 标题头部样式 */
+		.orders_wrapper .order_info{
+			width:45%;
+		}
+		.orders_wrapper .order_quantity{
+			width:10%;
+		}
+		.orders_wrapper .order_count{
+			width:10%;
+		}
+		.orders_wrapper .order_status{
+			width:20%;
+		}
+		.orders_wrapper .order_opt{
+			width:15%;
+		}
+		/* 订单块具体内容样式 */
+		.orders_wrapper .order_block{
+			margin-top:20px;
+		}
+			/* 订单标题 */
+			.order_block .order_title{
+				font-size:12px;
+				color:#999;
+				overflow:hidden;
+			}
+			.order_title .del{
+				float:right;
+			}
+			.order_title a{
+				color:#999;
+			}
+			/* .order_title a:hover{
+				text-decoration:underline;
+			} */
+			/* 订单详情 */
+			.order_block .order_detail{
+				overflow:hidden;
+				/* height:60px; */
+				border:1px solid #ddd;
+				border-left:0;
+				border-right:0;
+				background-color:#F9F9F9;
+				margin-top:5px;
+				padding:5px 0;
+			}
+				/* 团购信息 */
+				.order_block .order_info dl{
+					overflow:hidden;
+					padding:0 0 0 20px;
+				}
+				.order_block .order_info dl dt{
+					float:left;
+				}
+				.order_block .order_info dl dd{
+					width:200px;
+					float:left;
+					text-align:left;
+					line-height:20px;
+					margin-left:10px;
+				}
+				.order_block .order_info .prod_title{
+					color:#666;
+				}
+				.order_block .order_info .prod_title:hover{
+					color:#2BB8AA;
+					/* text-decoration:underline; */
+				}
+				.order_block .order_info .business_info{
+					color:#2BB8AA;
+				}
+				/* .order_block .order_info .business_info:hover{
+					text-decoration:underline;
+				} */
+				/* 数量 */
+				.order_block .order_quantity{
+					color:#666;
+					font-family: arial,sans-serif;
+				}
+				/* 总价 */
+				.order_block .order_count{
+					color:#666;
+					font-family: arial,sans-serif;
+				}
+				/* 订单状态 */
+				.order_block .order_status{
+					line-height:20px;
+				}
+				.order_block .order_status a{
+					color:#2BB8AA;
+				}
+				/* 操作 */
+				.order_block .order_opt .unpay{
+					display:inline-block;
+					width:80px;
+					height:20px;
+					line-height:20px;
+					background-color:#FA7114;
+					color:white;
+					border-bottom:1px solid #ddd;
+				}
+				.order_block .order_opt .payed{
+					line-height:20px;
+					color:#2BB8AA;
+				}

@@ -1,0 +1,431 @@
+*{
+	margin:0 auto;
+	padding:0;
+}
+.category{
+	width:980px;
+	height:100%;
+}
+	.filter_sortbar_out{
+		width:958px;
+		border:1px solid #ddd;
+		margin-top:10px;
+		padding:0 10px;
+	}
+		/* 过滤头部，动态显示过滤条件 */
+		.filter_breadcrumb{
+			padding:10px 0;
+		}
+		.filter_breadcrumb ul{
+			overflow:hidden;
+		}
+		.filter_breadcrumb ul li{
+			height:20px;
+		}
+		.filter_breadcrumb ul .all{
+			padding:0 8px;
+			border:1px solid #1CAF9A;
+			height:18px;
+			line-height:18px;
+			cursor:pointer;
+		}
+		
+		.filter_breadcrumb ul .ctx{
+			line-height:18px;
+			cursor:pointer;
+		}
+		.filter_breadcrumb ul .ctx:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		/* 指向箭头 */
+		.ctx .rightArrow{
+			height:20px;
+			line-height:20px;
+			margin:0 8px;
+			color:#666;
+			float:left;
+		}
+		/* 用于向后台提交的筛选条件，在input中的值 */
+		.ctx .ctx_title{
+			border:1px solid #1CAF9A; 
+			float:left;
+			/* padding:0; */
+			/* width:40px; */
+			/* width:30px; */
+			padding:0 8px;
+		}
+		.ctx_title .s_sort{
+			border:none;
+			width:100%;
+			text-align:center;
+			width:90px;
+			/* width:24px; */
+			/* padding:0 10px; */
+		}
+		/* 关闭按钮*/
+		.ctx .close{
+			color:#2BB8AA;
+			border:1px solid #1CAF9A;
+			border-left:0;
+			float:left;
+			font-weight:bold;
+			width:18px;
+			font-size:14px;
+			text-align:center;
+			cursor:pointer;
+		} 
+		.ctx .close:hover{
+			color:white;
+			background-color:#1CAF9A;
+		}
+			/* 鼠标浮动到被筛选的类上时，显示同类型
+			.ctx .ctx_title img{
+				position: relative;
+				top:-2px;
+				transition:all 0;
+			}
+			 .ctx_title .ctx_detail_wrapper{
+				display:none;
+				width:288px;
+				border:1px solid #1CAF9A;
+				border-top:0;
+				background-color:white;
+				position: absolute;
+				left:260px;
+				overflow:hidden;
+			}
+			.ctx_detail_wrapper .left_wrapper{
+				width:50px;
+				float:left;
+			}
+			.ctx_detail_wrapper .right_wrapper{
+				width:234px;
+				float:right;
+			}
+			.ctx_detail_wrapper .ctx_detail{
+				float:left;
+				padding:10px 4px;
+			}
+			.ctx_detail_wrapper .ctx_detail:after{
+				content:"";
+				clear:both;
+			}
+			.ctx_detail li a{
+				padding:2px 8px;
+			}
+			.ctx_detail li:after{
+				content:"|";
+			}
+			箭头旋转
+			.rotate{
+				transform:rotate(180deg);
+			} */
+		
+		/* 分类 */
+		.sorts{
+			padding:0 0 10px 0;
+			/* border-top:1px dotted #ddd; */
+			overflow:hidden;
+		}
+		.sorts hr{
+			border-top: 1px dotted #ddd;margin-bottom: 10px;color:white;
+		}
+		.sorts label{
+			float:left;
+			width:5%;
+			line-height:22px;
+			color:#333;
+		}
+		.sorts ul{
+			float:left;
+			overflow:hidden;
+			width:80%;
+			line-height:18px;
+		}
+		.sorts ul li{
+			text-align:center;
+			margin:4px 10px 4px 4px;
+		}
+		.sorts ul li a{
+			/* color:#666; */
+			padding:0px 5px;
+			display:inline-block;
+			font-size:12px;
+		}
+		.sorts ul li a:hover{
+			background-color:#2BB8AA ;
+			color:white;
+			border-radius:5px;
+		}
+		.sorts ul .all{
+			display:inline-block;
+			padding:0px 5px;
+			background-color:#2BB8AA ;
+			color:white;
+			border-radius:5px;
+		}
+		.sorts ul .hot{
+			color:#f76120;
+		}
+	/* 过滤排序标题条 */
+	.filter_sort{
+		width:978px;
+		height:30px;
+		line-height:30px;
+		height:30px;
+		border:1px solid #ddd;
+		margin-top:10px;
+	}
+		.filter_sort ul{
+			overflow:hidden;
+		}
+		.filter_sort ul li{
+			border-right:1px solid #ddd;
+		}
+		.filter_sort ul li a{
+			padding:7px 15px 0 20px;
+		}
+		.filter_sort ul li a:hover{
+			color:#2BB8AA;
+		}
+		/* 箭头的样式 */
+		.sortsWay{
+			font-weight:bold;
+			display:inline-block;
+			transition:all 0;
+		}
+		/* 箭头改变后的样式 */
+			.changesort{
+				color:#2BB8AA;
+				transform:rotateZ(180deg);
+			}
+			.changesort2{
+				color:#2BB8AA;
+			}
+		.filter_sort .current{
+			color:#2BB8AA;
+			border-top:2px solid #2BB8AA;
+		}
+
+/***********************主体部分内容样式开始********************************/
+	.category .main{
+		width:980px;
+	}
+		/* 清除浮动 */
+		.category .main:after{
+			content:""; 
+			display:block; 
+			clear:both; 
+		}
+		/* 商品内容展示 */
+		.main .content{
+			width:740px;
+			float:left;
+		}
+			.pageData ul:after{
+				content:"";
+				display:block;
+				clear:both;
+			}
+			.pageData ul li{
+				width:350px;
+				height:370px;
+				border:1px solid #ddd;
+				margin-right:15px;
+				margin-top:10px;
+			}
+			/* hover样式延迟代码： */
+			/* .content .pageData ul li:hover{
+				border-bottom:2px solid #2BB8AA;
+				transition-duration:1s;
+			} */
+			.pageData .title{
+				padding:10px;
+				line-height:25px;
+			}
+				.title .x_title{
+					font-size:16px;
+				}
+				.title .s_title{
+					font-size:14px;
+					color:#999;
+					font-weight:normal;
+				}
+			.pageData .discount{
+				padding:10px 10px 5px 10px;
+				border-bottom:1px solid #ddd;
+			}
+				.discount .price{
+					color:#f76120;
+					font-size:14px;
+					font-family: arial,sans-serif;
+				}
+					.price strong{
+						color:#f76120;
+						font-size:25px;
+					}
+				.discount .cut{
+					color:white;
+					background-color:#FF8E3F;
+					padding:3px;
+					margin-left:5px;
+				}
+				.discount .value{
+					margin-left:20px;
+					color:#999;
+				}
+					.value del{
+						color:#999;
+					}
+			.pageData .sales{
+				/* border:1px solid red; */
+				padding:10px;
+				background-color:#F9F9F9;
+				/* border-bottom:1px solid #ddd; */
+			}
+				.pageData .sales:after{
+					content:"";
+					display:block;
+					clear:both;
+				}
+				.sales .salescount{
+					color:#999;
+					float:left;
+				}
+					.sales .salescount strong{
+						color:#f76120;
+						font-weight:normal;
+					}
+				.sales a{
+					float:right;
+				}
+				.sales a .bgstar{
+					display:inline-block;
+					width:60px;
+					height:12px;
+					background:url('../images/category/bgstar.png') 0 0 no-repeat;
+				}
+				.sales a .bgstar .fgstar{
+					display:inline-block;
+					width:48px;
+					height:12px;
+					background:url('../images/category/fgstar.png') 0 0 no-repeat;
+				}
+			/* js内调用的给底部添加的样式 */
+			.pageData ul .bo{
+				/* border:1px solid #2BB8AA; */
+				box-shadow:1px 1px 2px 2px #01D0A4;
+			}
+	/*******************侧边栏样式开始 */
+		.main .sidebar{
+			width:238px;
+			float:left;
+			margin-top:10px;
+		}
+		.sidebar ul:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		/* 手机app下载部分 */
+		.sidebar .appdownload{
+			border:1px solid #DDDDDD;
+			border-bottom:0;
+		}
+		.sidebar .appdownload li{
+			padding:5px 15px;
+			border-bottom:1px solid #DDDDDD;
+		}
+		/* 疑难解答部分样式 */
+		.sidebar .answer{
+			width:204px;
+			margin-top:10px;
+			border:1px solid #DDDDDD;
+			padding:20px 15px;
+		}
+		.sidebar .answer h4{
+			font-size:15px;
+		}
+		.sidebar .answer p{
+			margin-top:10px;
+		}
+		.sidebar .answer a{
+			color:#00C3B0;
+			font-size:15px;
+		}
+		.sidebar .answer img{
+			position:relative;
+			top:2px;
+		}
+		/* 最近浏览部分样式 */
+		.sidebar .rec{
+			width:204px;
+			margin-top:10px;
+			border:1px solid #DDDDDD;
+			padding:20px 15px;
+		}
+		.sidebar .rec h4 span{
+			font-size:15px;
+		}
+		
+		.sidebar .rec h4 a{
+			color:#00C3B0;
+			font-size:12px;
+			position: relative;
+			left:100px;
+			font-weight:normal;
+		}
+		.sidebar .rec .rec_ctx li{
+			padding:15px 0;
+			border-bottom:1px dotted #DDDDDD;
+		}
+		.sidebar .rec .rec_ctx dl{
+			overflow:hidden;
+		}
+		.sidebar .rec .rec_ctx dt{
+			float:left;
+			width:42%;
+		}
+		.sidebar .rec .rec_ctx dd{
+			width:53%;
+			float:left;
+			margin-left:5px;
+		}
+		.sidebar .rec .rec_ctx .rec_title{
+			height:35px;
+		}
+		.sidebar .rec .rec_ctx i{
+			color:#F76121;
+			font-style:normal;
+		}
+		.sidebar .rec .rec_ctx span,.sidebar .rec .rec_ctx del{
+			color:gray;
+		}
+
+/* 狗皮膏药广告 */
+.fixadv{
+	position: fixed;
+	bottom:0;
+	z-index:3;
+}
+	.fixadv .advintro{
+		position: absolute;
+		z-index:10;
+		left:180px;
+		top:70px;
+		font-size:30px;
+		color:#CD6453;
+	}
+	.fixadv .closeadv{
+		position:absolute;
+		top:10px;
+		left:1300px;
+		color:#f6f6f6;
+		opacity:0.5;
+		font-size:20px;
+		font-weight:bold;
+		cursor:pointer;
+	}
+

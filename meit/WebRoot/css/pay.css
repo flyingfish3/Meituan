@@ -1,0 +1,182 @@
+
+	.pressbar2{
+		width:66.6%;
+		height:100%;
+		background-color:#2BB8AA;
+		float:left;
+	}
+/* 订单详情部分 */
+.order{
+	border-top:1px solid #DDDDDD;
+	margin-top:40px;
+	overflow:hidden;
+	padding:15px 10px;
+}
+	.order ul{
+		float:left;
+	}
+	.order ul li{
+		float:none;
+		height:30px;
+		line-height:30px;
+	}
+	.order .ordercount{
+		float:right;
+		font-size:14px;
+	}
+	.order .ordercount span{
+		color:#F76120;
+		font-size:24px;
+		font-weight:bold;
+		font-family: arial,sans-serif;
+	}
+/* 支付类型部分 */
+	.payment{
+		margin-top:10px;
+	}
+		.payment .payment_type{
+			line-height:40px;
+		}
+		/* tab头部的菜单的样式 */
+		.payment_top{
+			overflow:hidden;
+			width:980px;
+			margin-bottom:20px;
+		}
+		.payment .payment_type .payment_menu{
+			width:280px;
+			float:left;
+		}
+			.payment .payment_type .payment_menu .current{
+				border:2px solid #2BB8AA;
+				border-bottom:0;
+				/* width:130px; */
+			}
+			.payment .payment_type .payment_menu li{
+				/* width:43px; */
+				font-size:14px;
+				padding:0 10px;
+				cursor:pointer;
+				border-bottom:2px solid #2BB8AA;
+			}
+		.payment .payment_type .payment_tips{
+			width:700px;
+			float:left;
+			border-bottom:2px solid #2BB8AA;
+		}
+			.payment .payment_type .payment_tips li{
+				padding:0 10px;
+				position: relative;
+				left:540px;
+			}
+			.tips_help span{
+				display:inline-block;
+				transition:all 0s;
+			}
+			.rotate{
+				transform:rotate(180deg);
+			}
+	/* 支付帮助 */
+	.payment_help{
+		width:290px;
+		border:1px solid #DDDDDD;
+		position:absolute;
+		z-index:1;
+		left:860px;
+		top:295px;
+		background-color:white;
+		display:none;
+		padding:10px;
+	}
+	.payment_help li{
+		float:none;
+		line-height:25px;
+	}
+	.payment_help .helpMore{
+		text-indent:2em;
+	}
+	.payment_help .helpMore a{
+		color:#2EC6B6;
+	}
+	.payment_help .helpMore a:hover{
+		text-decoration:underline;
+	}
+	.payment_help li p{
+		display:none;
+	}
+		.payment_help .help_list span{
+			margin:0 5px;
+			display:inline-block;
+			color:#2CBFB0;
+			transition:all 0s;
+		}
+	
+	/* 具体的支付类型radio样式 */
+	.payment_list{
+		padding-bottom:20px;
+		border-bottom:1px solid #DDDDDD;
+	}
+	.payment_list ul{
+		width:100%;
+		overflow:hidden;
+	}
+	.payment_list ul li{
+		width:170px;
+		height:32px;
+		padding:5px 20px 5px 0;
+	}
+	.payment_list ul li input{
+		position: relative;
+		top:-10px;
+	}
+	.payment_list ul li label img{
+		border:1px solid #DDDDDD;
+	}
+	 .payment_list_1,.payment_list_2{
+	 	display:none;
+	 }
+	 		.current{
+				border:2px solid #2BB8AA;
+				border-bottom:0;
+			}
+			.notcurrent{
+				border-bottom:2px solid #2BB8AA;
+				border-top:0;
+				border-left:0;
+				border-right:0;
+			}
+
+	/* 去付款 */
+	.payment .payment_amount{
+		text-align:right;
+		font-size:14px;
+		font-weight:bold;
+		line-height:60px;
+	}
+		.payment .payment_amount span{
+			font-size:20px;
+			color:#F76120;
+		}
+	.payment .payment_submit{
+		text-align:right;
+		padding:10px 0;
+	}
+		.payment .payment_submit a{
+			display:inline-block;
+			width:100px;
+			height:40px;
+			background-color:#2DBBAD;
+			color:white;
+			font-size:20px;
+			text-align:center;
+			line-height:40px;
+			border-bottom: 1px solid #18655e
+		}
+	.payment .payment_back{
+		text-align:right;
+	}
+		.payment .payment_back a{
+			color:#2EC6B6;
+			font-size:14px;
+		}
+

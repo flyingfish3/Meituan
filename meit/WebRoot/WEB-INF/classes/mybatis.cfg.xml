@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+	"-//mybatis.org/DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.bdqn.meituan.vo.Position" alias="position"/>
+		<typeAlias type="com.bdqn.meituan.vo.GoodsVO" alias="gvo"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.GoodsTypes" alias="gt"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.Goods" alias="g"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.GoodsPacks" alias="gpacks"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.GoodsPics" alias="gpics"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.Store" alias="st"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.StorePics" alias="stpics"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.Letters" alias="letter"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.GoodsPageVO" alias="gpvo"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.Car" alias="car"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.GoodsAndCar" alias="gac"/>
+	 	<typeAlias type="com.bdqn.meituan.vo.CarVO" alias="carvo"/>
+	 </typeAliases>
+	  <mappers>
+	 	<mapper resource="com/bdqn/meituan/dao/Index.xml"/>
+	 	<mapper resource="com/bdqn/meituan/dao/Product.xml"/>
+	 	<mapper resource="com/bdqn/meituan/dao/Position.xml"/>
+	 	<mapper resource="com/bdqn/meituan/dao/Category.xml"/>
+	 	<mapper resource="com/bdqn/meituan/dao/Car.xml"/>
+	 </mappers>
+</configuration>
+

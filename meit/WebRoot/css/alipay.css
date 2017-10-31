@@ -1,0 +1,350 @@
+body{
+	background-color:#EFF0F1;
+	margin:0;
+	padding:0;
+}
+	*{
+		margin:0;
+		padding:0;
+	}
+	.top{
+		border-bottom:1px solid #d9d9d9;
+	}
+	.topbar{
+		height:26px;
+		line-height:26px;
+		background-color:#81868B;
+	}
+		.topbar a{
+			float:right;
+			color:white;
+			font-size:12px;
+			padding:0 10px;
+			position: relative;
+			right:190px;
+		}
+		.topbar span{
+			float:right;
+			color:white;
+			font-size:12px;
+			padding:0 10px;
+			position: relative;
+			right:190px;
+		}
+	.header{
+		height:60px;
+		margin:0 auto;
+		background-color:#FFFFFF;
+	}
+		.header span{
+			display:inline-block;
+			position: relative;
+			left:190px;
+		}
+		.header .log{
+			position: relative;
+			top:7px;
+			height:40px;
+			left:190px;
+		}
+		.header .title{
+			font-size:16px;
+			font-family: "Microsoft YaHei",微软雅黑,"宋体";
+			border-left:1px solid #756D70;
+			height:35px;
+			line-height:50px;
+			color:#756D70;
+			padding:0 8px;
+		}
+
+	.container{
+		width:950px;
+		margin:20px auto;
+
+	}
+	.container .orderDetail-base p  .ordernum{
+		font-weight:bold;
+	}
+		.orderDetail-base p{
+			font-size:14px;
+			height:30px;
+			line-height:30px;
+		}
+		.orderDetail-base p .help{
+			text-decoration:none;
+			color:#7E88D2;
+		}
+		.orderDetail-base p .help:hover{
+			text-decoration:underline;
+		}
+		.orderDetail-base p .timeout{
+			color:black;
+		}
+		.orderDetail-base .count{
+			position: relative;
+			left:430px;
+			top:-5px;
+		}
+		.orderDetail-base .count .countM{
+			color:#FF6600;
+			font-size:20px;
+			font-weight:bold;
+			font-family:tahoma,arial,\5b8b\4f53;
+		}
+	.container	.view_top{
+		overflow:hidden;
+	}
+		.view_top .vf{
+			float:right;
+			text-align:center;
+			width:70px;
+			height:30px;
+			line-height:30px;
+		    background-color:#B3B3B3;
+		    color:white;
+		    font-weight:bold;
+		    font-size:12px;
+		    position: relative;
+		    right:20px;
+		}
+	.container .cashier_center_view{
+		width:2000px;
+		position: relative;
+	}
+/************ 88888888888888888888888888********************************************************************** */
+		.forhide{
+			width:950px;
+			 overflow:hidden;
+			/*border:1px solid red; */
+
+		}
+		.cashier_center_view:after{
+			content:'';
+			display:block;
+			clear:both;
+		}
+		 .cashier_center_view .phone_pay{
+			float:left;
+		}
+		.cashier_center_view .web_pay{
+			float:left;
+		} 
+		/* 手机支付 */
+		.cashier_center_view .phone_pay,.cashier_center_view .web_pay{
+			border-bottom:3px solid #B3B3B3;
+			border-top:3px solid #B3B3B3;
+			width:950px;
+			height:481px;
+		}
+			.phone_pay .phone_left,.web_pay .web_right{
+				width:790px;
+				background-color:white;
+				padding:70px 0 100px 0;
+			}
+				.web_pay .web_right{
+					height:481px;
+					padding:0;
+				}
+				.phone_left_ctx{
+					width:190px;
+					position: relative;
+					left:270px;
+					text-align:center;
+				}
+				.phone_left p{
+					height:25px;
+					line-height:25px;
+				}
+				.phone_left .pay{
+					color:#FF6600;
+					font-weight:bold;
+					font-size:24px;
+					font-family:tahoma,arial,\5b8b\4f53;
+				}
+				.phone_left .paytip{
+					font-size:14px;
+				}
+				/* 二维码 */
+				.phone_left .mark{
+					width:170px;
+					border:1px solid #ddd;
+					padding:5px;
+					margin:10px 0;
+					/* 设置阴影 */
+					box-shadow:3px 3px 3px 0 #E6E6E6;
+				}
+				.mark .paymarktip{
+					width:125px;
+					margin-left:auto;
+					margin-right:auto;
+					margin-top:10px;
+				}
+				.mark .paymarktip:after{
+					content:"";
+					display:block;
+					clear:both;
+				}
+				.paymarktip .markimg{
+					width:30px;
+					height:30px;
+					float:left;
+				}
+				.paymarktip .marktip{
+					width:90px;
+					font-size:12px;
+					height:15px;
+					line-height:15px;
+					float:left;
+					color:#666;
+				}
+				/* a标签 */
+				.phone_left a{
+					font-size:13px;
+					color:#666;
+					text-decoration:none;
+				}
+				.phone_left a:hover{
+					text-decoration:underline;
+				}
+				/* 指示如何手机支付的图 */
+				.phone_left ul{
+					position: relative;
+					z-index:1;
+					left:460px;
+					top:-350px;
+				}
+				.phone_left ul li{
+					list-style:none;
+					position: absolute;
+				}
+			.phone_pay .phone_right,.web_pay .web_left{
+				width:160px;
+				height:481px;
+				background-color:#E6E6E6;
+			}
+				.phone_pay .phone_right{
+					position: relative;
+					top:-481px;
+					left:790px;
+					border-left:1px solid #d9d9d9;
+				}
+				.web_pay .web_left{
+					border-right:1px solid #d9d9d9;
+					position: relative;z-index:1;
+				}
+				.phone_right img,.phone_right a,.web_left img,.web_left a{
+					display:block;
+				}
+				.phone_right img,.phone_right a{
+					position: relative;
+					left:40px;
+					top:150px;
+					cursor:pointer;
+				}
+				.web_left img,.web_left a{
+					position: relative;
+					left:50px;
+					top:150px;
+					cursor:pointer;
+				}
+				.phone_right a,.web_left a{
+					text-decoration:none;
+					color:white;
+					background-color:#00AEEF;
+					font-size:12px;
+					height:35px;
+					line-height:35px;
+					text-align:center;
+					width:120px;
+					border-radius:5px;
+					margin-top:20px;
+					position: relative;
+					left:20px;
+				}
+/********************** 电脑支付部分表单提交部分样式********************** */
+.web_pay .web_right{
+	/* border:1px solid red; */
+	position: relative;
+	left:160px;
+	top:-481px;
+	/* z-index:-1; */
+} 
+	.web_right form{
+		/* margin:100px 250px; */
+		position: relative;
+		top:100px;
+		left:250px;
+		width:370px;
+	}
+	.web_right form h3{
+		border-bottom:2px solid #CBCBCB;
+		line-height:25px;
+		font-weight:700;
+	}
+	.web_right form h3:after{
+		content:'';
+		display:block;
+		clear:both;
+	}
+	.web_right form h3 span{
+		float:left;
+	}
+	.web_right form h3 a{
+		color:#9189CA;
+		text-decoration:none;
+		font-size:14px;
+		float:right;
+	}
+	.lp h5{
+		padding:25px 0 10px 0;
+	}
+	.lp h5:after{
+		content:'';
+		display:block;
+		clear:both;
+	}
+	.lp h5 span{
+		float:left;
+		font-weight:normal;
+	}
+	.lp h5 a{
+		float:right;
+		color:#9189CA;
+		text-decoration:none;
+		font-size:12px;
+		font-weight:normal;
+	}
+	.lp input{
+		width:365px;
+		height:30px;
+		line-height:30px;
+	}
+
+	.password p{
+		color:#ACACAC;
+		font-size:12px;
+		line-height:20px;
+	}
+	.password p b{
+		color:red;
+	}
+	.web_right form .submit{
+		width:370px;
+		height:35px;
+		background-color:#00AEEF;
+		color:white;
+		font-weight:bold;
+		border:none;
+		margin-top:15px;
+	}
+/* ********************尾部合作伙伴*********************** */
+.partner{
+	text-align:center;
+}
+ .partner p{
+ 	color:#666;
+ 	font-size:14px;
+ 	line-height:35px;
+ 	height:50px;
+ 	margin-bottom:10px;
+ }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- 定义类 -->
+	<bean id="ts" class="com.bdqn.meituan.service.TimeoutService"></bean>
+	<!-- job的配置开始 -->
+	<bean id="myjob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 目标对象 -->
+		<property name="targetObject" ref="ts"></property>
+		<!-- 目标方法 -->
+		<property name="targetMethod" value="removeTimeoutGoods"></property>
+	</bean>
+	<!-- 调度任务配置：触发器 -->
+	<bean id="ct" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="myjob"></property>
+		<property name="cronExpression" value="0/1 * * * * ?"></property>
+	</bean>
+	<!--定时任务容器,启动任务  -->
+	<bean id="sf" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers" >
+			<list>
+				<ref bean="ct"/>
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.meituan.dao.IPositionDAO">
+	<resultMap type="letter" id="letter_area">
+		<result property="letter" column="letter"/>
+		<collection property="areas" column="letter" select="findAreas"></collection>
+	</resultMap>
+	<!-- 查询字母 -->
+	<select id="findLetter_Areas" resultMap="letter_area">
+		 SELECT DISTINCT LETTER FROM AREA WHERE SUPERID IN (SELECT AREAID FROM AREA WHERE SUPERID = 0) ORDER BY LETTER
+	</select>
+	<!-- 查询字母对应的二级城市 -->
+	<select id="findAreas" parameterType="String" resultType="position">
+		SELECT A.AREAID, A.AREANAME FROM AREA A WHERE LETTER =#{letter} AND SUPERID IN (SELECT AREAID FROM AREA WHERE SUPERID = 0)
+	</select>
+</mapper>

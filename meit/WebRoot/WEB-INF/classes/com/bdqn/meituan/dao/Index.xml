@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.meituan.dao.IindexDAO">
+
+	<!-- 查询出开通过了直通车的商品 -->
+	<select id="findCarGoods" parameterType="int" resultType="g">
+		<![CDATA[
+			  SELECT ROWNUM,
+		           TEMP.GOODSID,
+		           TEMP.DEFAULTPIC,
+		           TEMP.GOODSNAME,
+		           TEMP.GROPRICE,
+		           TEMP.GOODSADV
+		      FROM (SELECT ROWNUM,
+		                   G.GOODSID,
+		                   G.DEFAULTPIC,
+		                   G.GOODSNAME,
+		                   G.GROPRICE,
+		                   G.GOODSADV
+		              FROM GOODS G
+		             WHERE G.CAROR = 1
+		               AND G.STOREID IN
+		                   (SELECT STOREID
+		                      FROM STORES
+		                     WHERE AREAID IN
+		                           (SELECT AREAID FROM AREA WHERE SUPERID =#{areaid}))
+		             ORDER BY G.CARVALUE DESC) TEMP
+		     WHERE ROWNUM <= 12
+		 ]]>
+	</select>
+	<!-- 查询出首页名店抢购的商品 -->
+	<select id="findSpecGoods" parameterType="int" resultType="g">
+		<![CDATA[
+			SELECT ROWNUM,
+	           G.GOODSID,
+	           G.DEFAULTPIC,
+	           G.GOODSNAME,
+	           G.GROPRICE,
+	           NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT,
+	           NVL(FUNC_SALES(GOODSID), 0) AS SALES
+	      FROM GOODS G
+	     WHERE G.SPECOR = 1
+	       AND G.STOREID IN
+	           (SELECT STOREID
+	              FROM STORES
+	             WHERE AREAID IN (SELECT AREAID FROM AREA WHERE SUPERID =#{areaid}))
+	       AND ROWNUM <= 25
+		 ]]>
+	</select>
+
+
+	<resultMap type="gt" id="sec_third">
+		<result property="typeid" column="typeid"/>
+		<collection property="thirdTypes" column="typeid" select="findthirdTypes"></collection>
+	</resultMap>
+	<resultMap type="gvo" id="type_goods">
+		<result property="typeid" column="typeid"/>
+		<result property="areaid" column="areaid"/>
+		<collection property="goodslist" column="{typeid=typeid,areaid=areaid}" select="findOneGoods"></collection>
+		<collection property="typelist" column="typeid" select="findOneSubTypes"></collection>
+		<collection property="secTypes" column="typeid" select="findSecTypes"></collection>
+	</resultMap>
+	<!-- 查询出首页展示所需要的商品 -->
+	<select id="findIndexGoods" resultMap="type_goods" parameterType="int">
+		SELECT SIGN,
+		       TYPEID,
+		       TYPENAME,
+		       SUPERTYPE,
+		       NICKNAME,
+		       AREAID,
+		       AREANAME,
+		       SUPERID
+		  FROM (SELECT '#' SIGN, GT.TYPEID, GT.TYPENAME, GT.SUPERTYPE, GT.NICKNAME
+		          FROM GOODSTYPE GT
+		         WHERE GT.SUPERTYPE = 0),
+		       (SELECT * FROM AREA A WHERE A.AREAID =#{areaid})
+
+	</select>
+	<!-- 查询某个大分类下前12个商品 -->
+	<select id="findOneGoods" resultType="g" parameterType="gvo">
+	<![CDATA[
+		   SELECT T.GOODSID,
+            T.TYPEID,
+            T.DEFAULTPIC,
+            T.GOODSNAME,
+            T.GOODSADV,
+            T.GROPRICE,
+            T.STOREPRICE,
+            T.EVALUATION,
+            T.SALES,
+            T.EVALNUMS,
+            T.CUT,
+            ROWNUM
+       FROM (SELECT G.GOODSID,
+                    G.TYPEID,
+                    G.DEFAULTPIC,
+                    G.GOODSNAME,
+                    G.GOODSADV,
+                    G.GROPRICE,
+                    G.STOREPRICE,
+                    NVL((FUNC_EVAL(GOODSID) / 5) * 60, 0) AS EVALUATION,
+                    NVL(FUNC_SALES(GOODSID), 0) AS SALES,
+                    NVL(FUNC_EVALPEOPLE(GOODSID), 0) AS EVALNUMS,
+                    NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT
+               FROM GOODS G
+              INNER JOIN GOODSTYPE GT
+                 ON G.TYPEID = GT.TYPEID
+              WHERE GT.SUPERTYPE IN
+                    (SELECT GTS.TYPEID
+                       FROM GOODSTYPE GTS
+                      WHERE GTS.SUPERTYPE =#{typeid})
+                AND G.STOREID IN
+                    (SELECT STOREID
+                       FROM STORES
+                      WHERE AREAID IN
+                            (SELECT AREAID FROM AREA WHERE SUPERID =#{areaid}))
+              ORDER BY SALES DESC) T
+      WHERE ROWNUM <=
+	 ]]>
+		    <if test="typeid==1">12</if>
+		    <if test="typeid!=1">8</if>
+	</select>
+	<!--查询出某个大分类下的前5个小分类  -->
+	<select id="findOneSubTypes" parameterType="int" resultType="gt">
+		<![CDATA[
+		  SELECT  gt.typeid,gt.typename,gt.supertype FROM goodstype gt WHERE gt.supertype IN(
+         select gts.typeid from goodstype gts WHERE gts.supertype=#{typeid}) AND ROWNUM<=
+        ]]>
+         <if test="_parameter==1">7</if>
+		 <if test="_parameter!=1">5</if>
+	</select>
+	<!--查询出某个大分类下的二级分类  -->
+	<select id="findSecTypes" parameterType="int" resultMap="sec_third">
+		SELECT  ROWNUM,GT.TYPEID, GT.TYPENAME FROM GOODSTYPE GT WHERE GT.SUPERTYPE =#{typeid}
+	</select>
+	<!-- 查询二级分类下的三级分类 -->
+	<select id="findthirdTypes" parameterType="int" resultType="gt">
+		SELECT  ROWNUM,GT.TYPEID, GT.TYPENAME FROM GOODSTYPE GT WHERE GT.SUPERTYPE =#{typeid}
+	</select>
+	
+	<select id="findAreaName" parameterType="int" resultType="string">
+		SELECT AREANAME FROM AREA WHERE AREAID = #{areaid}
+	</select>
+</mapper>

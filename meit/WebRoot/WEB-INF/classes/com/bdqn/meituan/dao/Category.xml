@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.meituan.dao.ICategoryDAO">
+	<!-- 一级typeid下：根据类型和地址分页查询 -->
+	<select id="findFirst_TypeGoods" parameterType="gpvo" resultType="g">
+		<![CDATA[
+			 SELECT H.GOODSID,
+			       H.TYPEID,
+			       H.DEFAULTPIC,
+			       H.GOODSNAME,
+			       H.GOODSADV,
+			       H.GROPRICE,
+			       H.STOREPRICE,
+			       H.EVALUATION,
+			       H.SALES,
+			       H.EVALNUMS,
+			       H.CUT,
+			       ROWNUM
+			  FROM (SELECT T.GOODSID,
+			               T.TYPEID,
+			               T.DEFAULTPIC,
+			               T.GOODSNAME,
+			               T.GOODSADV,
+			               T.GROPRICE,
+			               T.STOREPRICE,
+			               T.EVALUATION,
+			               T.SALES,
+			               T.EVALNUMS,
+			               T.CUT,
+			               ROWNUM RN
+			          FROM (SELECT G.GOODSID,
+			                       G.TYPEID,
+			                       G.DEFAULTPIC,
+			                       G.GOODSNAME,
+			                       G.GOODSADV,
+			                       G.GROPRICE,
+			                       G.STOREPRICE,
+			                       NVL((FUNC_EVAL(GOODSID) / 5) * 60, 0) AS EVALUATION,
+			                       NVL(FUNC_SALES(GOODSID), 0) AS SALES,
+			                       NVL(FUNC_EVALPEOPLE(GOODSID), 0) AS EVALNUMS,
+			                       NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT
+			                  FROM GOODS G
+			                 INNER JOIN GOODSTYPE GT
+			                    ON G.TYPEID = GT.TYPEID
+			                 WHERE GT.SUPERTYPE IN
+			                       (SELECT GTS.TYPEID
+			                          FROM GOODSTYPE GTS
+			                         WHERE GTS.SUPERTYPE =#{typeid})
+			                   AND G.STOREID IN
+			                       (SELECT STOREID
+			                          FROM STORES
+			                         WHERE AREAID IN
+			                               (SELECT AREAID FROM AREA WHERE SUPERID = #{areaid}))
+			                 ORDER BY SALES DESC) T
+			         WHERE ROWNUM <=#{currentPage}*#{pageSize}) H
+			 WHERE H.RN >(#{currentPage}-1)*#{pageSize}
+	 		]]>
+	</select>
+	<!--一级typeid下： 查询该分页的总页数 -->
+	<select id="findFirst_CountPage" parameterType="gpvo" resultType="int">
+		SELECT CEIL(COUNT(GOODSID) /#{pageSize})
+		  FROM (SELECT T.GOODSID,
+		               T.TYPEID,
+		               T.DEFAULTPIC,
+		               T.GOODSNAME,
+		               T.GOODSADV,
+		               T.GROPRICE,
+		               T.STOREPRICE,
+		               T.EVALUATION,
+		               T.SALES,
+		               T.EVALNUMS,
+		               T.CUT,
+		               ROWNUM RN
+		          FROM (SELECT G.GOODSID,
+		                       G.TYPEID,
+		                       G.DEFAULTPIC,
+		                       G.GOODSNAME,
+		                       G.GOODSADV,
+		                       G.GROPRICE,
+		                       G.STOREPRICE,
+		                       NVL((FUNC_EVAL(GOODSID) / 5) * 60, 0) AS EVALUATION,
+		                       NVL(FUNC_SALES(GOODSID), 0) AS SALES,
+		                       NVL(FUNC_EVALPEOPLE(GOODSID), 0) AS EVALNUMS,
+		                       NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT
+		                  FROM GOODS G
+		                 INNER JOIN GOODSTYPE GT
+		                    ON G.TYPEID = GT.TYPEID
+		                 WHERE GT.SUPERTYPE IN
+		                       (SELECT GTS.TYPEID
+		                          FROM GOODSTYPE GTS
+		                         WHERE GTS.SUPERTYPE =#{typeid})
+		                   AND G.STOREID IN
+		                       (SELECT STOREID
+		                          FROM STORES
+		                         WHERE AREAID IN
+		                               (SELECT AREAID FROM AREA WHERE SUPERID = #{areaid}))
+		                 ORDER BY SALES DESC) T)
+	</select>
+	<!-- 二级typeid下：根据类型和地址分页查询 -->
+	<select id="findSecond_TypeGoods" parameterType="gpvo" resultType="g">
+		<![CDATA[
+			SELECT H.GOODSID,
+		       H.TYPEID,
+		       H.DEFAULTPIC,
+		       H.GOODSNAME,
+		       H.GOODSADV,
+		       H.GROPRICE,
+		       H.STOREPRICE,
+		       H.EVALUATION,
+		       H.SALES,
+		       H.EVALNUMS,
+		       H.CUT,
+		       ROWNUM
+		  FROM (SELECT T.GOODSID,
+		               T.TYPEID,
+		               T.DEFAULTPIC,
+		               T.GOODSNAME,
+		               T.GOODSADV,
+		               T.GROPRICE,
+		               T.STOREPRICE,
+		               T.EVALUATION,
+		               T.SALES,
+		               T.EVALNUMS,
+		               T.CUT,
+		               ROWNUM RN
+		          FROM (SELECT G.GOODSID,
+		                       G.TYPEID,
+		                       G.DEFAULTPIC,
+		                       G.GOODSNAME,
+		                       G.GOODSADV,
+		                       G.GROPRICE,
+		                       G.STOREPRICE,
+		                       NVL((FUNC_EVAL(GOODSID) / 5) * 60, 0) AS EVALUATION,
+		                       NVL(FUNC_SALES(GOODSID), 0) AS SALES,
+		                       NVL(FUNC_EVALPEOPLE(GOODSID), 0) AS EVALNUMS,
+		                       NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT
+		                  FROM GOODS G
+		                 INNER JOIN GOODSTYPE GT
+		                    ON G.TYPEID = GT.TYPEID
+		                 WHERE GT.Typeid IN(SELECT TYPEID FROM goodstype WHERE supertype=#{typeid})
+		                   AND G.STOREID IN
+		                       (SELECT STOREID
+		                          FROM STORES
+		                         WHERE AREAID IN
+		                               (SELECT AREAID FROM AREA WHERE SUPERID =#{areaid}))
+		                 ORDER BY SALES DESC) T
+		         WHERE ROWNUM <#{currentPage}*#{pageSize}) H
+		 WHERE H.RN >(#{currentPage}-1)*#{pageSize}
+		]]>
+	</select>
+	<!--二级typeid下： 查询该分页的总页数 -->
+	<select id="findSecond_CountPage" parameterType="gpvo" resultType="int">
+		SELECT CEIL(COUNT(GOODSID) /#{pageSize})
+		  FROM (SELECT T.GOODSID,
+		               T.TYPEID,
+		               T.DEFAULTPIC,
+		               T.GOODSNAME,
+		               T.GOODSADV,
+		               T.GROPRICE,
+		               T.STOREPRICE,
+		               T.EVALUATION,
+		               T.SALES,
+		               T.EVALNUMS,
+		               T.CUT,
+		               ROWNUM RN
+		          FROM (SELECT G.GOODSID,
+		                       G.TYPEID,
+		                       G.DEFAULTPIC,
+		                       G.GOODSNAME,
+		                       G.GOODSADV,
+		                       G.GROPRICE,
+		                       G.STOREPRICE,
+		                       NVL((FUNC_EVAL(GOODSID) / 5) * 60, 0) AS EVALUATION,
+		                       NVL(FUNC_SALES(GOODSID), 0) AS SALES,
+		                       NVL(FUNC_EVALPEOPLE(GOODSID), 0) AS EVALNUMS,
+		                       NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT
+		                  FROM GOODS G
+		                 INNER JOIN GOODSTYPE GT
+		                    ON G.TYPEID = GT.TYPEID
+		                  WHERE GT.Typeid IN(SELECT TYPEID FROM goodstype WHERE supertype=#{typeid})
+		                   AND G.STOREID IN
+		                       (SELECT STOREID
+		                          FROM STORES
+		                         WHERE AREAID IN
+		                               (SELECT AREAID FROM AREA WHERE SUPERID =#{areaid}))
+		                 ORDER BY SALES DESC) T)       
+	</select>
+	<!-- 三级typeid下：根据类型和地址和packname分页查询 -->
+	<select id="findThird_TypeGoods" parameterType="gpvo" resultType="g">
+			 SELECT H.GOODSID,
+		        H.TYPEID,
+		        H.DEFAULTPIC,
+		        H.GOODSNAME,
+		        H.GOODSADV,
+		        H.GROPRICE,
+		        H.STOREPRICE,
+		        H.EVALUATION,
+		        H.SALES,
+		        H.EVALNUMS,
+		        H.CUT,
+		        ROWNUM
+		   FROM (SELECT T.GOODSID,
+		                T.TYPEID,
+		                T.DEFAULTPIC,
+		                T.GOODSNAME,
+		                T.GOODSADV,
+		                T.GROPRICE,
+		                T.STOREPRICE,
+		                T.EVALUATION,
+		                T.SALES,
+		                T.EVALNUMS,
+		                T.CUT,
+		                ROWNUM RN
+		           FROM (SELECT G.GOODSID,
+		                        G.TYPEID,
+		                        G.DEFAULTPIC,
+		                        G.GOODSNAME,
+		                        G.GOODSADV,
+		                        G.GROPRICE,
+		                        G.STOREPRICE,
+		                        NVL((FUNC_EVAL(G.GOODSID) / 5) * 60, 0) AS EVALUATION,
+		                        NVL(FUNC_SALES(G.GOODSID), 0) AS SALES,
+		                        NVL(FUNC_EVALPEOPLE(G.GOODSID), 0) AS EVALNUMS,
+		                        NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT
+		                   FROM GOODS G
+		                  INNER JOIN GOODSTYPE GT
+		                     ON G.TYPEID = GT.TYPEID
+		                  INNER JOIN PACKAGE PACK
+		                     ON G.GOODSID = PACK.GOODSID
+		                 <where>
+		                 	<if test="typeid!=0">GT.TYPEID = #{typeid}</if> 
+		                 	<if test="areaid!=0">
+		                 		AND G.STOREID IN
+		                        (SELECT STOREID
+		                           FROM STORES
+		                          WHERE AREAID IN
+		                                (SELECT AREAID FROM AREA WHERE SUPERID =#{areaid}))
+		                 	</if>
+		                 	<if test="packname!=null">
+		                 		AND PACK.PACKNAME = #{packname}
+		                 	</if>
+		                 </where>
+		                 <![CDATA[ ORDER BY SALES DESC) T
+		          WHERE ROWNUM <=#{currentPage}*#{pageSize}) H
+				 WHERE H.RN >=(#{currentPage}-1)*#{pageSize}       
+		]]> 
+	</select>
+	<!--三级typeid下： 查询该分页的总页数 -->
+	<select id="findThird_CountPage" parameterType="gpvo" resultType="int">
+		SELECT CEIL(COUNT(GOODSID) /#{pageSize})
+		  FROM (SELECT T.GOODSID,
+		               T.TYPEID,
+		               T.DEFAULTPIC,
+		               T.GOODSNAME,
+		               T.GOODSADV,
+		               T.GROPRICE,
+		               T.STOREPRICE,
+		               T.EVALUATION,
+		               T.SALES,
+		               T.EVALNUMS,
+		               T.CUT,
+		               ROWNUM RN
+		          FROM (SELECT G.GOODSID,
+		                       G.TYPEID,
+		                       G.DEFAULTPIC,
+		                       G.GOODSNAME,
+		                       G.GOODSADV,
+		                       G.GROPRICE,
+		                       G.STOREPRICE,
+		                       NVL((FUNC_EVAL(G.GOODSID) / 5) * 60, 0) AS EVALUATION,
+		                       NVL(FUNC_SALES(G.GOODSID), 0) AS SALES,
+		                       NVL(FUNC_EVALPEOPLE(G.GOODSID), 0) AS EVALNUMS,
+		                       NVL((G.STOREPRICE - G.GROPRICE), 1) AS CUT
+		                  FROM GOODS G
+		                 INNER JOIN GOODSTYPE GT
+		                    ON G.TYPEID = GT.TYPEID
+		                 INNER JOIN PACKAGE PACK
+		                     ON G.GOODSID = PACK.GOODSID   
+		                 <where>
+		                 	<if test="typeid!=0">GT.TYPEID = #{typeid}</if> 
+		                 	<if test="areaid!=0">
+		                 		AND G.STOREID IN
+		                        (SELECT STOREID
+		                           FROM STORES
+		                          WHERE AREAID IN
+		                                (SELECT AREAID FROM AREA WHERE SUPERID =#{areaid}))
+		                 	</if>
+		                 	<if test="packname!=null">
+		                 		AND PACK.PACKNAME = #{packname}
+		                 	</if>
+		                 </where>
+		                 ORDER BY SALES DESC) T)   
+	</select>
+	
+	<!-- 查询typeid一级分类下面的信息（resultmap查询出三级）-->
+	<select id="findFirst_ThridTypes" parameterType="int" resultMap="ft_tt">
+		SELECT gt.typeid,gt.typename FROM goodstype gt WHERE gt.typeid=#{typeid}
+	</select>
+	<!-- 查询该一级分类下所有三级分类 的resultMap-->
+	<resultMap type="gt" id="ft_tt">
+		<result property="typeid" column="typeid"/>
+		<collection property="thirdTypes" column="typeid" select="first_third"></collection>
+	</resultMap>
+	<!-- 查询一级分类下所有的三级分类 -->
+	<select id="first_third" parameterType="int" resultType="gt">
+		SELECT GT.TYPEID, GT.TYPENAME FROM GOODSTYPE GT WHERE GT.SUPERTYPE IN(SELECT GTS.TYPEID FROM GOODSTYPE GTS WHERE GTS.SUPERTYPE =#{typeid})
+	</select>
+	
+	<!-- 查询typeid二级分类下面的信息（resultmap查询出三级以及父类型）-->
+	<select id="findSec_ThirdTypes" parameterType="int" resultMap="st_tt">
+		SELECT gt.typeid,gt.typename FROM goodstype gt WHERE gt.typeid=#{typeid}
+	</select>
+	<!-- 查询该二级分类下所有三级分类 的resultMap-->
+	<resultMap type="gt" id="st_tt">
+		<result property="typeid" column="typeid"/>
+		<collection property="thirdTypes" column="typeid" select="second_third"></collection>
+		<collection property="superTypes" column="typeid" select="second_super"></collection>
+	</resultMap>
+	<!-- 查询二级分类下所有的三级分类 -->
+	<select id="second_third" parameterType="int" resultType="gt">
+		SELECT GT.TYPEID, GT.TYPENAME FROM GOODSTYPE GT WHERE SUPERTYPE =#{typeid}
+	</select>
+	<!-- 查询二级分类的父级分类-->
+	<select id="second_super" parameterType="int" resultType="gt">
+		 SELECT TYPEID,typename FROM goodstype WHERE typeid=(SELECT gt.supertype FROM goodstype gt WHERE gt.typeid=#{typeid})
+	</select>
+	
+	<!-- 根据三级typeid查询自己的相关信息以及其父分类信息-->
+	<select id="findThir_SuperTypes" parameterType="int" resultMap="tt_st">
+		SELECT gt.typeid,gt.typename FROM goodstype gt WHERE gt.typeid=#{typeid}
+	</select>
+	<resultMap type="gt" id="tt_st">
+		<result property="typeid" column="typeid"/>
+		<collection property="superTypes" column="typeid" select="third_super"></collection>
+	</resultMap>
+	<!-- 查询父类信息 -->
+	<select id="third_super" parameterType="int" resultType="gt">
+		 SELECT gt.supertype,gt.typename FROM goodstype gt WHERE TYPEID=#{typeid} UNION
+        SELECT  gt.supertype,gt.typename FROM goodstype gt WHERE TYPEID =(SELECT gt.supertype FROM goodstype gt WHERE TYPEID=#{typeid})
+	</select>
+	
+	<!-- 根据areaid查询该二级地区下的所有三级地区 -->
+	<select id="findSec_ThirdAreas" parameterType="int" resultType="position">
+		SELECT * FROM area a  WHERE a.superid=#{areaid}
+	</select>
+</mapper>

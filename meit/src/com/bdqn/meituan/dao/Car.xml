@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.meituan.dao.ICarDAO">
+	<!-- 插入到car表 (先把carid查询出来存放到carid里面，留着insertgoodsandcar中使用)-->
+	<insert id="insertCar" parameterType="car">
+		<selectKey keyProperty="carid" order="BEFORE" resultType="int">
+			select seq_carid.nextval from dual
+		</selectKey>
+		insert into car values(#{carid},sysdate,#{userid})
+	</insert>
+	<!-- 插入到goodsandcar表(批量插入方法，foreach) -->
+	<insert id="insertGoodsAndCar">
+		insert into GOODSANDCAR 
+			select seq_gacid.nextval,a.* from(
+		<foreach collection="list" item="item" separator="union all">
+			select #{item.carid} carid,#{item.goodsid} goodsid,#{item.buynum} buynum from dual
+		</foreach>
+			)a
+	</insert>
+	
+	<!--  根据Userid查询页面所需要的购物车信息
+	<select id="getCarGoods" parameterType="int" resultMap="carvo">
+		SELECT T.GOODSID, T.DEFAULTPIC, T.GOODSADV, T.GROPRICE, TT.BUYNUM
+		  FROM (SELECT G.GOODSID, G.DEFAULTPIC, G.GOODSADV, G.GROPRICE
+		          FROM GOODS G
+		         WHERE G.GOODSID IN
+		               (SELECT GOODSID
+		                  FROM GOODSANDCAR
+		                 WHERE CARID = (SELECT CARID FROM CAR WHERE USERID =#{userid}))) T
+		 INNER JOIN (SELECT GAC.BUYNUM, GAC.GOODSID
+		               FROM GOODSANDCAR GAC
+		              WHERE GAC.CARID = (SELECT CARID FROM CAR WHERE USERID =#{userid})) TT
+		    ON T.GOODSID = TT.GOODSID
+	</select> -->
+	
+	<!-- 根据goodsid删除某个用户下购物车的商品 -->
+	
+</mapper>

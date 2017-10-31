@@ -1,0 +1,97 @@
+
+a:link{text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.active a{
+	overflow:hidden;
+}
+.e_i{
+	width:14px;
+	height:11px;
+	background:url('../images/register/e_icon.png') center 0 no-repeat;
+	float:left;
+	margin-top:5px;
+}
+.e_f,.p_f{
+	margin-left:4px;
+}
+.p_i{
+	width:9px;
+	height:13px;
+	background:url('../images/register/p_icon.png') center 0 no-repeat;
+	float:left;
+	margin-top:4px;
+}
+	.tab-content form{
+		margin-top:30px;
+	}
+		/* label里面字体样式 */
+		.tab-content form label{
+			font-weight:normal;
+		}
+		/* 邮箱校验提示框样式 */
+		.forPromt{
+			font-size:12px;
+			margin-left:-20px;
+			position: relative;
+			top:3px;
+			left:7px;
+		}
+			.forPromt:after{
+				content:"";
+				display:block;
+				clear:both;
+			}
+			/* 提示正确和错误的图片样式 */
+			.forPromt .imgcontainer{
+				width:20px;
+				height:20px;
+				float:left;
+				margin:6px 0;
+			}
+				/* 校验正确时的图片样式。供js调用 */
+				.errorImg{
+					background:url('../images/register/error.png') 0 0 no-repeat;
+				}
+				/* 校验错误时的图片样式。供js调用 */
+				.okImg{
+					background:url('../images/register/ok.png') 0 0 no-repeat;
+				}
+			/* 提示正确和错误的文字提示样式 */
+			.forPromt .checkResult{
+				height:34px;
+				float:left;
+				padding:6px;
+			}
+				/* 校验正确时的文字的样式 */
+				.errorP{
+					color:red;
+				}
+				/* 校验错误时的文字的样式 */
+				.okP{
+					color:green;
+				}
+	/* 文本域聚焦时样式 */
+	.required:focus{
+		border:1px solid red;
+		background-color:#fcc;
+	}
+
+	/* 密码强度低的样式 */
+	.low{
+		width:33.3%;
+		height:100%;
+		background-color:#fcc;
+	}
+	/* 密码强度中的样式 */
+	.mediu{
+		width:66.6%;
+		height:100%;
+		background-color:orange;
+	}
+	/* 密码强度高的样式 */
+	.high{
+		width:100%;
+		height:100%;
+		background-color:#8ED200;
+	}
